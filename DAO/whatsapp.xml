@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE whatsapp>
+
+<whatsapp>
+  <contacts>
+    <contact id_contact="n1">
+      <nom>Malick SOW</nom>
+    </contact>
+    <contact id_contact="n2">
+      <nom>Issa FALL</nom>
+    </contact>
+    <contact id_contact="n3">
+      <nom>Fallou BA</nom>
+    </contact>
+  </contacts>
+  <messages>
+    <message id_message="m1">
+      <expediteur id_expediteur="n1" />
+      <recepteur id_recepteur="n2" />
+      <contenu id_contenu="c1" type="texte">Hello, how are you?</contenu>
+    </message>
+    <message id_message="m2">
+      <expediteur id_expediteur="n2" />
+      <recepteur id_recepteur="g1 n2" />
+      <contenu id_contenu="c2" type="texte">Fine thanks</contenu>
+      <citation id_citation="c1" />
+    </message>
+  </messages>
+  <groupes>
+    <groupe id_groupe="g1">
+      <nom>DIC2</nom>
+      <membres>
+        <membre id_membre="n1" />
+        <membre id_membre="n2" />
+      </membres>
+    </groupe>
+    <groupe id_groupe="g2">
+      <nom>DIC1</nom>
+      <membres>
+        <membre id_membre="n1" />
+        <membre id_membre="n3" />
+      </membres>
+    </groupe>
+  </groupes>
+</whatsapp>
