@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE dialogue SYSTEM "dialogue.xsd">
+<dialogue>
+<situation>
+    x et y se rencontrent devant la porte de l'école ESP
+</situation>
+<replique>
+    <personnage> x </personnage>
+        <texte> Bonjour,ou se trouve DGI</texte>
+</replique>
+<replique>
+    <personnage> y </personnage>
+    <texte> il faut aller tout droit et ça sera à votre droite </texte>
+</replique>
+<situation>
+    x et y se rencontrent devant la porte de l'école ESP
+</situation>
+<replique>
+    <personnage> x </personnage>
+        <texte> Bonjour,ou se trouve DGI</texte>
+</replique>
+<replique>
+    <personnage> y </personnage>
+    <texte> il faut aller tout droit et ça sera à votre droite </texte>
+</replique>
+<situation>
+    x et y se rencontrent devant la porte de l'école ESP
+</situation>
+<replique>
+    <personnage> x </personnage>
+        <texte> Bonjour,ou se trouve DGI</texte>
+</replique>
+<replique>
+    <personnage> y </personnage>
+    <texte> il faut aller tout droit et ça sera à votre droite </texte>
+</replique>
+<situation>
+    x et y se rencontrent devant la porte de l'école ESP
+</situation>
+<replique>
+    <personnage> x </personnage>
+        <texte> Bonjour,ou se trouve DGI</texte>
+</replique>
+<replique>
+    <personnage> y </personnage>
+    <texte> il faut aller tout droit et ça sera à votre droite </texte>
+</replique>
+</dialogue>
