@@ -1,0 +1,27 @@
+<!ELEMENT messagerie (contacts, groupes, messages)>
+
+<!ELEMENT contacts (contact*)>
+<!ELEMENT contact (nom, telephone)>
+<!ELEMENT nom (#PCDATA)>
+<!ELEMENT telephone (#PCDATA)>
+
+<!ELEMENT groupes (groupe*)>
+<!ELEMENT groupe (nom, membres)>
+<!ELEMENT nom (#PCDATA)>
+<!ELEMENT membres (contact*)>
+<!ELEMENT contact EMPTY>
+<!ATTLIST contact id CDATA #REQUIRED>
+
+<!ELEMENT messages (message*)>
+<!ELEMENT message (expediteur, destinataire?, groupe?, contenu, timestamp, citation?)>
+<!ELEMENT expediteur EMPTY>
+<!ATTLIST expediteur id CDATA #REQUIRED>
+<!ELEMENT destinataire EMPTY>
+<!ATTLIST destinataire id CDATA #REQUIRED>
+<!ELEMENT groupe EMPTY>
+<!ATTLIST groupe id CDATA #REQUIRED>
+<!ELEMENT contenu (#PCDATA)>
+<!ATTLIST contenu type CDATA #IMPLIED>
+<!ELEMENT timestamp (#PCDATA)>
+<!ELEMENT citation EMPTY>
+<!ATTLIST citation id CDATA #REQUIRED>

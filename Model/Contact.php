@@ -1,9 +1,15 @@
 <?php
+require_once "./DAO/ContactManager.php";
 class Contact
 {
     private int $id;
     private int $name;
     private int $telephone;
+    private static  $contactManager;
+    public function initialise()
+    {
+        self::$contactManager = new ContactManager(__CLASS__);
+    }
 
     public function __construct(int $id, string $name, int $telephone)
     {
@@ -11,7 +17,10 @@ class Contact
         $this->name = $name;
         $this->telephone = $telephone;
     }
-
+    public static function find()
+    {
+        return self::$contactManager->find();
+    }
     /**
      * Get the value of id
      */
