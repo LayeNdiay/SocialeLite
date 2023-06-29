@@ -1,13 +1,7 @@
 <?xml version="1.0"?>
-<<<<<<< HEAD
 <!DOCTYPE messagerie SYSTEM "data.dtd">
 <messagerie>
     <contacts>
-=======
-<!DOCTYPE messagerie>
-<messagerie>
-    <contacts laye="je suis Big Laye" adama="je suis Big Laye">
->>>>>>> 02bacd321f4e710e21a251667af161661754af21
         <contact id="1">
             <nom>John Doe</nom>
             <telephone>+1234567890</telephone>
