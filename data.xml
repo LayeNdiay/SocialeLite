@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
+<!DOCTYPE messagerie>
 <messagerie>
-    <contacts laye="je suis Big Laye">
+    <contacts laye="je suis Big Laye" adama="je suis Big Laye">
         <contact id="1">
             <nom>John Doe</nom>
             <telephone>+1234567890</telephone>
