@@ -1,4 +1,3 @@
-<?php define('ROOT', 'C:/xampp/htdocs/SocialeLite/');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -6,12 +5,9 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" href="./src/prism.css">
-   <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"> -->
-   <script src="./src/prism.js"></script>
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?lang=xml&amp;skin=sunburst"></script> 
    <script src="./src/home.js"></script>
-   <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> -->
-
    <title>Document</title>
 </head>
 
@@ -20,10 +16,10 @@
       <div style="display: flex">
 
          <div class="codeXML">
-            <pre>
+            <pre class="prettyprint">
              <code class="language-xml">
              <?php
-               highlight_file(ROOT . "dialogue.xml"); ?>   
+               highlight_file("whatsapp.xml"); ?>   
             </code>
             </pre>
          </div>
@@ -46,33 +42,55 @@
    </div>
 </body>
 
-
-
 </html>
 <style>
    h2 {
-      margin-top: 30px;
-      color: white;
-      text-align: center;
-   }
+  margin-top: 30px;
+  color: white;
+  text-align: center;
+}
 
-   .buttons {
-      margin-top: 10px;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-   }
+.buttons {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
 
-   .buttons button {
-      outline: none;
-      border-radius: 20px;
-      padding: 10px;
-      display: flex;
-      flex-direction: row;
-   }
+.buttons button {
+  outline: none;
+  border-radius: 20px;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+}
 
-   #formulaire {
-      width: 90%;
-      /* margin-left: 20px; */
-   }
+*,
+*::before,
+*::after {
+box-sizing: border-box;
+}
+
+html,
+body {
+height: 100%;
+width: 100%;
+margin: 0;
+}
+
+.codeXML {
+margin-left: 0px;
+padding-right: 10px;
+display: flex;
+width: 50%;
+max-height: 600px;
+
+}
+
+.container {
+height: 100%;
+width: 100%;
+}
+
 </style>
+
