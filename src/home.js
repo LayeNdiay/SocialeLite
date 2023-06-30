@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', function () {
   let monBoutons = document.getElementsByTagName('button');
   let xhr = new XMLHttpRequest();
@@ -24,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Préparer la requête
     xhr.open(
       'GET',
-      './Views/formulaire.php?info=' + encodeURIComponent(info),
+      'formulaire/' + encodeURIComponent(info),
       true
     );
     // Envoyer la requête
