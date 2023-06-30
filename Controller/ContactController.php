@@ -1,6 +1,5 @@
 <?php
 
-define("MODEL", dirname(__DIR__) . DIRECTORY_SEPARATOR . "Model" . DIRECTORY_SEPARATOR);
 require_once "Controller.php";
 require_once MODEL . "Contact.php";
 
@@ -8,6 +7,17 @@ class ContactController extends Controller
 {
     public function index()
     {
-        Contact::find();
+        $contacts = Contact::findByPhoneNumber("772374233");
+        if ($contacts) {
+            # code...
+            var_dump($contacts);
+        }
+        var_dump("contacts");
+    }
+    public function created()
+    {
+    }
+    public function store()
+    {
     }
 }
