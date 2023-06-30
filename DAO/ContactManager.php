@@ -9,7 +9,7 @@ class ContactManager extends Manager
     }
     public function find()
     {
-        $contacts = $this->xml->xpath("/whatsapp/contacts");
+        $contacts = $this->getXml()->xpath("/whatsapp/contacts");
         var_dump($contacts);
     }
 }

@@ -6,7 +6,7 @@ class Contact
     private int $name;
     private int $telephone;
     private static  $contactManager;
-    public function initialise()
+    public static function initialise()
     {
         self::$contactManager = new ContactManager(__CLASS__);
     }
@@ -19,6 +19,7 @@ class Contact
     }
     public static function find()
     {
+        self::initialise();
         return self::$contactManager->find();
     }
     /**

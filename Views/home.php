@@ -1,4 +1,4 @@
-<?php define('ROOT', 'C:/xampp/htdocs/SocialeLite/');
+<?php define('ROOT', dirname(__DIR__) . DIRECTORY_SEPARATOR);
 ?>
 <!DOCTYPE html>
 <html lang="en">

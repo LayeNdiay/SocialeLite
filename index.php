@@ -1,28 +1,12 @@
 <?php
-$xml = simplexml_load_file("data.xml");
-// $xml->contacts->addAttribute("adama", "je suis Big Laye");
-// var_dump($xml->saveXML("data.xml")); 
-?>
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-<body>
-
-    <?php include_once("./Views/home.php") ?>
-</body>
-
-</html>
-<style>
-    body {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        background-color: rgb(40 44 51);
-    }
-</style>
+$cotrollerPath = __DIR__  . DIRECTORY_SEPARATOR . "Controller" . DIRECTORY_SEPARATOR;
+require_once $cotrollerPath . "HomeController.php";
+require_once $cotrollerPath . "ContactController.php";
+$home = new HomeController();
+$contact = new ContactController();
+$action = $_GET["action"] ?? "accueil";
+if ($action === "accueil") {
+    $home->index();
+} elseif ($action === "contacts") {
+    $contact->index();
+}
