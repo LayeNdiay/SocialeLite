@@ -8,6 +8,8 @@ class AuthController  extends Controller
         if ($this->isConnected()) {
             $this->redirect();
         }
+        $error = $this->flash();
+        require VIEWS . "inscription.php";
     }
     public function loginPost()
     {

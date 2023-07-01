@@ -5,8 +5,7 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-   <script
-      src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?lang=xml&amp;skin=sunburst"></script>
+   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?lang=xml&amp;skin=sunburst"></script>
    <title>Document</title>
 </head>
 
@@ -18,7 +17,7 @@
             <pre class="prettyprint">
              <code class="language-xml">
              <?php
-             highlight_file("../DAO/data.xml"); ?>   
+               highlight_file("data.xml"); ?>   
             </code>
             </pre>
          </div>
@@ -81,10 +80,9 @@
       height: 100%;
       width: 100%;
       margin: 0;
-      <<<<<<< HEAD padding: 0;
+      padding: 0;
       box-sizing: border-box;
       background-color: rgb(40 44 51);
-      =======>>>>>>>fbbebefe6d344152aaa3d5e007c2a3f21624b3fa
    }
 
    .codeXML {

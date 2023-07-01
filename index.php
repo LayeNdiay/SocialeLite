@@ -21,4 +21,12 @@ if ($action === "accueil") {
     $group->index();
 } elseif ($action === "Onegroupe") {
     $group->viewOne(intval($_GET["id"]));
+} elseif ($action === "createGroupes") {
+    $group->create();
+} elseif ($action === "createGroupesPost") {
+    $group->store();
+} elseif ($action === "createContacts") {
+    $contact->create();
+} elseif ($action === "createContactsPost") {
+    $contact->store();
 }

@@ -14,10 +14,30 @@ class ContactController extends Controller
         }
         var_dump("contacts");
     }
-    public function created()
+    public function create()
     {
+        $this->requiredAuth();
+        $error = $this->flash();
+        $old = $this->old();
     }
     public function store()
     {
+        $this->requiredAuth();
+        if (!isset($_POST["phone"]) || !isset($_POST["name"])) {
+            $_SESSION["error"] =  "Le formulaire est incomplet";
+            $_SESSION["old"] = ["name" => $_POST["name"], "phone" => $_POST["phone"]];
+            $this->redirect("/contact/create");
+        }
+
+        $contact = new Contact(0, $_POST["name"], $_POST["phone"]);
+
+        if (Contact::findByPhoneNumber("772374233")) {
+            $contact->create();
+            $this->redirect("/contact");
+        } else {
+            $_SESSION["error"] = "Ce numéro de téphone est déjà enrégitré";
+            $_SESSION["old"] = ["phone" => $_POST["phone"]];
+            $this->redirect("/contact/create");
+        }
     }
 }
