@@ -1,6 +1,6 @@
+
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta charset="utf-8">
   <!-- importer le fichier de style -->
@@ -9,8 +9,9 @@
 <body>
   <div id="container">
     <!-- zone de connexion -->
-    <form action="home" method="POST">
+    <form action="login" method="POST">
       <h1 style="text-align: center">Connexion</h1>
+      <p><?=$error?></p>
       <label><b>Votre Numero</b></label>
       <input type="number" name="phone" required class="form-control">
       <input type="submit" id='submit' value='LOGIN'>

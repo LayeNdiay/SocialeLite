@@ -72,6 +72,7 @@ $info = isset($_GET['info']) ? $_GET['info'] : '';
 
 if ($info == "new-msg") { ?>
    <!-- nouveau message -->
+   <form action="contacts/create" method="POST" > 
    <div class="mb-3">
       <label for="Nom-contacte" class="form-label">Nom Contacte</label>
       <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="adama dia">
@@ -82,9 +83,9 @@ if ($info == "new-msg") { ?>
    </div>
 
    <div class="mb-3">
-      <label for="message" class="form-label">Votre message</label>
-      <textarea class="form-control" id="message" rows="3"></textarea>
+  <button tyle="submit" class="btn btn-primary">Crée</button>  
    </div>
+   </form>
 
 
 <?php } else if ($info == "private-msg") { ?>

@@ -41,7 +41,7 @@
                   <div class="msg left-msg">
                      <div class="msg-bubble">
                         <div class="msg-info">
-                           <div class="msg-info-name">BOT</div>
+                           <div class="msg-info-name">Azprime</div>
                            <div class="msg-info-time">12:45
                               <div class="btn-group">
                                  <!-- <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown"
@@ -60,7 +60,7 @@
                         </div>
 
                         <div class="msg-text">
-                           Hi, welcome to Simple 😄
+                           bonjour 😄
                         </div>
                      </div>
                   </div>
@@ -68,10 +68,10 @@
                   <div class="msg right-msg">
                      <div class="msg-bubble">
                         <div class="msg-info">
-                           <div class="msg-info-name">Sajad</div>
+                           <div class="msg-info-name">UserName</div>
                            <div class="msg-info-time">12:46</div>
                         </div>
-                        <div class="msg-text">You can change your name in JS section!</div>
+                        <div class="msg-text">Message Bidon!</div>
                      </div>
                   </div>
                </main>
