@@ -17,7 +17,7 @@
             <pre class="prettyprint">
              <code class="language-xml">
              <?php
-               highlight_file("../DAO/data.xml"); ?>   
+               highlight_file("data.xml"); ?>   
             </code>
             </pre>
          </div>

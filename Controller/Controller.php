@@ -1,5 +1,6 @@
 <?php
 define("MODEL", dirname(__DIR__) . DIRECTORY_SEPARATOR . "Model" . DIRECTORY_SEPARATOR);
+define("VIEWS", dirname(__DIR__) . DIRECTORY_SEPARATOR . "Views" . DIRECTORY_SEPARATOR);
 class Controller
 {
     protected string $viewsPath;
@@ -41,7 +42,7 @@ class Controller
     }
     public function redirect(string $path = "/")
     {
-        header("location: http://localhost/DAO" . $path);
+        header("location: http://localhost/SocialeLite" . $path);
     }
     public function requiredAuth()
     {

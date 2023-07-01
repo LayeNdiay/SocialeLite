@@ -9,6 +9,7 @@ class AuthController  extends Controller
             $this->redirect();
         }
         $error = $this->flash();
+        require VIEWS . "inscription.php";
     }
     public function loginPost()
     {
