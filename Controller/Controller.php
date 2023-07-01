@@ -8,11 +8,19 @@ class Controller
     {
         $this->viewsPath = dirname(__DIR__) . DIRECTORY_SEPARATOR . "Views" . DIRECTORY_SEPARATOR;
     }
+    public function user()
+    {
+        $this->verifySession();
+        return Contact::findById($_SESSION["user"]);
+    }
 
     public function isConnected()
     {
-        if (isset($_SESSION["user"]) && Contact::findById($_SESSION["id"])) {
-            return true;
+        $this->verifySession();
+        if (isset($_SESSION["user"])) {
+            if (Contact::findById($_SESSION["user"])) {
+                return true;
+            }
         }
         return false;
     }
@@ -24,6 +32,8 @@ class Controller
     }
     public function flash(string $message = "error"): string
     {
+        $this->verifySession();
+
         $error = "";
         if (isset($_SESSION[$message])) {
             $error = $_SESSION[$message];
@@ -33,6 +43,7 @@ class Controller
     }
     public function old()
     {
+        $this->verifySession();
         $old = array();
         if (isset($_SESSION["old"])) {
             $old = $_SESSION["old"];

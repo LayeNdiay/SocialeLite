@@ -1,23 +1,39 @@
 <?php
-require_once "utils/TypeMessage.php";
+require_once "Contact.php";
+require_once DAO . "MessageManager.php";
 class Message
 {
     private int $id;
-    private int $idRecepteur;
     private int $idExpediteur;
     private string $content;
-    private TypeMessage $type;
+    private  DateTime $createdAt;
+    private static  $messageManger;
+    public static function initialise()
+    {
+        self::$messageManger = new MessageManager(__CLASS__);
+    }
 
-    public function __construct(int $id, string $content, TypeMessage $type, int $idExpediteur, int $idRecepteur = 0)
+
+    public function __construct(int $id, string $content, DateTime $date, int $idExpediteur)
     {
         $this->id = $id;
         $this->content = $content;
-        $this->type = $type;
-        $this->idRecepteur = $idRecepteur;
         $this->idExpediteur = $idExpediteur;
+        $this->createdAt = $date;
+        self::initialise();
+    }
+    public static function findMydiscussion(int $id)
+    {
+        self::initialise();
+        $discussions = self::$messageManger->find($id);
+        for ($i = 0; $i < count($discussions); $i++) {
+            # code...
+            $discussions[$i]["contact"] = Contact::findById(intval($discussions[$i]["contact"]));
+        }
+        return $discussions;
     }
 
-    public function findGroupeMessages(int $id)
+    public static function findGroupeMessages(int $id)
     {
     }
 
@@ -41,25 +57,6 @@ class Message
         return $this;
     }
 
-    /**
-     * Get the value of type
-     */
-    public function getType()
-    {
-        return $this->type;
-    }
-
-    /**
-     * Set the value of type
-     *
-     * @return  self
-     */
-    public function setType(TypeMessage $type)
-    {
-        $this->type = $type;
-
-        return $this;
-    }
 
     /**
      * Get the value of id
@@ -82,26 +79,6 @@ class Message
     }
 
     /**
-     * Get the value of $idRecepteur
-     */
-    public function getIdRecepteur()
-    {
-        return $this->idRecepteur;
-    }
-
-    /**
-     * Set the value of $idRecepteur
-     *
-     * @return  self
-     */
-    public function setIdRecepteur($idRecepteur)
-    {
-        $this->idRecepteur = $idRecepteur;
-
-        return $this;
-    }
-
-    /**
      * Get the value of idExpediteur
      */
     public function getIdExpediteur()
@@ -117,6 +94,26 @@ class Message
     public function setIdExpediteur($idExpediteur)
     {
         $this->idExpediteur = $idExpediteur;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of createdAt
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set the value of createdAt
+     *
+     * @return  self
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
 
         return $this;
     }

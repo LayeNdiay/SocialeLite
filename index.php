@@ -29,4 +29,6 @@ if ($action === "accueil") {
     $contact->create();
 } elseif ($action === "createContactsPost") {
     $contact->store();
+} elseif ($action === "oneContact") {
+    $contact->view(intval($_GET["id"]));
 }

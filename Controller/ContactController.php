@@ -2,6 +2,7 @@
 
 require_once "Controller.php";
 require_once MODEL . "Contact.php";
+require_once MODEL . "Message.php";
 
 class ContactController extends Controller
 {
@@ -13,6 +14,13 @@ class ContactController extends Controller
             var_dump($contacts);
         }
         var_dump("contacts");
+    }
+    public function view(int $id)
+    {
+        $user = $this->user();
+
+        $discusions = Message::findMydiscussion($user->getId());
+        var_dump($discusions);
     }
     public function create()
     {
