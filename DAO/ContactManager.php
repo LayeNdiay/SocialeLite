@@ -9,7 +9,43 @@ class ContactManager extends Manager
     }
     public function find()
     {
-        $contacts = $this->xml->xpath("/whatsapp/contacts");
-        var_dump($contacts);
+        $contactsXml = $this->getXml()->xpath("/messagerie/contacts/contact");
+        $contacts = [];
+        foreach ($contactsXml as $contact) {
+            array_push($contacts, new self::$class(intval($contact->attributes()["id"]), $contact->nom, intval($contact->telephone)));
+        }
+        return $contacts;
+    }
+    public function findById(int $id)
+    {
+        $contactsXml = $this->getXml()->xpath("/messagerie/contacts/contact[@id=$id]");
+        if ($contactsXml) {
+            return  new self::$class(intval($contactsXml[0]->attributes()["id"]), $contactsXml[0]->nom, $contactsXml[0]->telephone);
+        }
+        return false;
+    }
+    public function findByPhoneNumber(string $phone)
+    {
+        $contactsXml = $this->getXml()->xpath("/messagerie/contacts/contact");
+        if ($contactsXml) {
+            foreach ($contactsXml as $contactXml) {
+                if ($contactXml->telephone == $phone) {
+
+                    return  new self::$class(intval($contactXml[0]->attributes()["id"]), $contactXml[0]->nom, $contactXml[0]->telephone);
+                }
+            }
+        }
+        return false;
+    }
+    public function create($contact)
+    {
+        $xml = $this->getXml();
+        $contactsXml = $xml->contacts[0];
+        $contactNode = $contactsXml->addChild("contact");
+        $contact->setId(count($contactsXml->children()));
+        $contactNode->addChild('nom', $contact->getName());
+        $contactNode->addChild('telephone', $contact->getTelephone());
+        $contactNode->addAttribute('id', $contact->getId());
+        $xml->asXML(self::$file);
     }
 }

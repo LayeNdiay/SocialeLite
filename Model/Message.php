@@ -17,6 +17,7 @@ class Message
         $this->idExpediteur = $idExpediteur;
     }
 
+
     /**
      * Get the value of Content
      */

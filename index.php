@@ -1,29 +1,24 @@
 <?php
-$xml = simplexml_load_file("data.xml");
-// $xml->contacts->addAttribute("adama", "je suis Big Laye");
-// var_dump($xml->saveXML("data.xml")); 
-?>
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <title>Document</title>
-</head>
-
-<body>
-
-    <?php include_once("./Views/inscription.php") ?>
-</body>
-
-</html>
-<style>
-    body {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        background-color: rgb(40 44 51);
-    }
-</style>
+$cotrollerPath = __DIR__ . DIRECTORY_SEPARATOR . "Controller" . DIRECTORY_SEPARATOR;
+require_once $cotrollerPath . "HomeController.php";
+require_once $cotrollerPath . "ContactController.php";
+require_once $cotrollerPath . "GroupController.php";
+require_once $cotrollerPath . "AuthController.php";
+$home = new HomeController();
+$contact = new ContactController();
+$auth = new AuthController();
+$group = new GroupController();
+$action = $_GET["action"] ?? "accueil";
+if ($action === "accueil") {
+    $home->index();
+} elseif ($action === "contacts") {
+    $contact->index();
+} elseif ($action === "login") {
+    $auth->login();
+} elseif ($action === "loginPost") {
+    $auth->loginPost();
+} elseif ($action === "groupes") {
+    $group->index();
+} elseif ($action === "Onegroupe") {
+    $group->viewOne(intval($_GET["id"]));
+}

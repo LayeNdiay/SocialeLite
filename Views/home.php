@@ -81,9 +81,10 @@
       height: 100%;
       width: 100%;
       margin: 0;
-      padding: 0;
+      <<<<<<< HEAD padding: 0;
       box-sizing: border-box;
       background-color: rgb(40 44 51);
+      =======>>>>>>>fbbebefe6d344152aaa3d5e007c2a3f21624b3fa
    }
 
    .codeXML {

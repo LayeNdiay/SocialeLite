@@ -1,14 +1,39 @@
 <?php
-class Group
+require_once "Model.php";
+
+require_once DAO . "GroupManager.php";
+class Group extends Model
 {
     private string $name;
     private int $id;
+    private static  $groupManager;
+    public static function initialise()
+    {
+        self::$groupManager = new GroupManager(__CLASS__);
+    }
+
 
     public function __construct(int $id, string $name)
     {
         $this->name = $name;
         $this->id = $id;
+        self::initialise();
     }
+
+    public static function find(int $id)
+    {
+        self::initialise();
+        return self::$groupManager->find($id);
+    }
+
+    public static function findById(int $id)
+    {
+        self::initialise();
+        return self::$groupManager->findById($id);
+    }
+
+
+
     /**
      * Get the value of name
      */

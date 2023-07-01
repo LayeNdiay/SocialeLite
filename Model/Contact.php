@@ -1,25 +1,44 @@
 <?php
-require_once "./DAO/ContactManager.php";
-class Contact
+require_once "Model.php";
+
+require_once DAO . "ContactManager.php";
+
+class Contact extends Model
 {
     private int $id;
-    private int $name;
-    private int $telephone;
+    private string $name;
+    private string $telephone;
     private static  $contactManager;
-    public function initialise()
+    public static function initialise()
     {
         self::$contactManager = new ContactManager(__CLASS__);
     }
 
-    public function __construct(int $id, string $name, int $telephone)
+    public function __construct(int $id = 0, string $name, string $telephone)
     {
         $this->id = $id;
         $this->name = $name;
         $this->telephone = $telephone;
+        self::initialise();
     }
     public static function find()
     {
+        self::initialise();
         return self::$contactManager->find();
+    }
+    public static function findById(int $id)
+    {
+        self::initialise();
+        return self::$contactManager->findById($id);
+    }
+    public static function findByPhoneNumber(string $phone)
+    {
+        self::initialise();
+        return self::$contactManager->findByPhoneNumber($phone);
+    }
+    public function create()
+    {
+        return self::$contactManager->create($this);
     }
     /**
      * Get the value of id

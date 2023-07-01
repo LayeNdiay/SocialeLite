@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!DOCTYPE messagerie SYSTEM "data.dtd">
+<!DOCTYPE messagerie>
 <messagerie>
     <contacts>
         <contact id="1">
@@ -9,6 +9,10 @@
         <contact id="2">
             <nom>Jane Smith</nom>
             <telephone>+9876543210</telephone>
+        </contact>
+        <contact id="3">
+            <nom>laye</nom>
+            <telephone>772374233</telephone>
         </contact>
     </contacts>
     <groupes>
