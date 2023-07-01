@@ -5,6 +5,7 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
    <script
       src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?lang=xml&amp;skin=sunburst"></script>
    <title>Document</title>
@@ -22,16 +23,23 @@
             </code>
             </pre>
          </div>
-         <div class="bootstrap-utilities">
-            <h2 id="bullDiscussion">Demarrer Une une</h2>
+         <div>
+            <div class="btn-group">
+               <button class="dropdown-toggle logout" data-bs-toggle="dropdown" aria-expanded="false">
+                  Username
+               </button>
+               <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">se deconnecter</a></li>
+               </ul>
+            </div>
             <div class="buttons">
-               <button data-info="private-msg">
+               <button data-info="private-msg" class="monButton">
                   <img width="24" height="24" src="./src/new msg.png" alt="private-message" />
                   Discussion Prive</button>
-               <button data-info="new-msg">
+               <button data-info="new-msg" class="monButton">
                   <img width="24" height="24" src="./src/ajouter msg.png" alt="new-message" />
                   Nouvelle Discussion</button>
-               <button data-info="group-msg">
+               <button data-info="group-msg" class="monButton">
                   <img width="24" height="24" src="./src/groupe msg.png" alt="groupe-message" />
                   Discussion de Groupe</button>
             </div>
@@ -92,6 +100,18 @@
       display: flex;
       width: 50%;
       max-height: 600px;
+
+   }
+
+   .logout {
+      display: flex;
+      padding: 10px;
+      border-radius: 20px;
+   }
+
+   .btn-group {
+      display: flex;
+      flex-direction: row-reverse;
 
    }
 

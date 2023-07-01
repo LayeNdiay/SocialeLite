@@ -33,7 +33,7 @@
                <header class="msger-header">
                   <div class="msger-header-title">
                      <a class="material-symbols-outlined chevron" href="/SocialeLite/home">
-                        <i class="fa fa-chevron-left" style="font-size:24px"></i>
+                        <i class=" fa fa-chevron-left" style="font-size:24px"></i>
                      </a> SimpleChat
                   </div>
                </header>

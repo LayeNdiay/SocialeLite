@@ -18,7 +18,7 @@ $contacts = array(
 );
 
 //groupes
-$groupes = ["DIC1", "DIC2"];
+$groupes = [["name" => "DIC1", "id" => 1], ["name" => "DIC2", "id" => 2]];
 
 
 //messages
@@ -72,19 +72,21 @@ $info = isset($_GET['info']) ? $_GET['info'] : '';
 
 if ($info == "new-msg") { ?>
    <!-- nouveau message -->
-   <form action="contacts/create" method="POST" > 
-   <div class="mb-3">
-      <label for="Nom-contacte" class="form-label">Nom Contacte</label>
-      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="adama dia">
-   </div>
-   <div class="mb-3">
-      <label for="numero-contact" class="form-label">Numero Contacte</label>
-      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="774563267">
-   </div>
+   <form action="contacts/create" method="POST">
+      <div class="mb-3">
+         //! make it clear about names
 
-   <div class="mb-3">
-  <button tyle="submit" class="btn btn-primary">Crée</button>  
-   </div>
+         <label for="Nom-contacte" class="form-label">Nom Contacte</label>
+         <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="adama dia">
+      </div>
+      <div class="mb-3">
+         <label for="numero-contact" class="form-label">Numero Contacte</label>
+         <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="774563267">
+      </div>
+
+      <div class="mb-3">
+         <button tyle="submit" class="btn btn-primary">Crée</button>
+      </div>
    </form>
 
 
@@ -96,8 +98,8 @@ if ($info == "new-msg") { ?>
       <?php foreach ($messages as $message) {
          ?>
          <a href="<?= "discussion/" . $message['discussion_id'] ?>" class="bullDiscussion">
-            <p></p>
-         <?= $message['expediteur'] ?>
+            <p>
+            <?= $message['expediteur'] ?>
             </p>
             <p>
             <?= $message['contenu'] ?>
@@ -111,26 +113,17 @@ if ($info == "new-msg") { ?>
    <?php } else { ?>
 
       <!-- groupes -->
-      <form method="POST" action="">
+      <div class="listContact listgroupe">
 
-         <label for="discussion" class="form-label">Nom du groupe</label>
-         <select class="form-select" aria-label="Discussion" id="discussion">
-         <?php foreach ($groupes as $groupe): ?>
-            <option value=<?= $groupe ?>><?= $groupe ?></option>
-         <?php endforeach; ?>
-         </select>
-
-         <label for="citer_message" class="form-label">citer un message du chat</label>
-         <select class="form-select" aria-label="citer un message de la discussion" id="citer_message">
-         <?php foreach ($messages as $message): ?>
-            <option value=<?= $message['contenu'] ?>><?= $message['contenu'] ?></option>
-         <?php endforeach; ?>
-         </select>
-         <div class="mb-3">
-            <label for="message" class="form-label">votre message</label>
-            <textarea class="form-control" id="message" rows="3"></textarea>
-         </div>
-      </form>
+      <?php foreach ($groupes as $groupe) {
+         ?>
+         <a href="<?= "discussionGroup/" . $groupe['id'] ?>" class="bullDiscussion groupe">
+            <p>
+            <?= $groupe['name'] ?>
+            </p>
+         </a>
+      <?php } ?>
+      </div>
 
    <?php } ?>
 
@@ -151,9 +144,11 @@ if ($info == "new-msg") { ?>
       max-height: 460px;
       overflow: scroll;
       margin-top: 20px;
-
    }
 
+   .listgroupe {
+      min-height: 400px;
+   }
 
    /* Style time text */
    .time-right {
@@ -165,5 +160,9 @@ if ($info == "new-msg") { ?>
 
    label {
       color: white;
+   }
+
+   .groupe {
+      padding: 10px;
    }
 </style>

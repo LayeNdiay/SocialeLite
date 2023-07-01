@@ -1,21 +1,39 @@
-
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
   <!-- importer le fichier de style -->
 </head>
 
 <body>
   <div id="container">
     <!-- zone de connexion -->
-    <form action="login" method="POST">
-      <h1 style="text-align: center">Connexion</h1>
-      <p><?=$error?></p>
-      <label><b>Votre Numero</b></label>
+    <!-- <?php if ($_GET['register']) { ?>
+
+      <form action="login" method="POST">
+        <h3 style="text-align: center">welcome</h3>
+        <label><b>Votre Numero</b></label>
+        <input type="text" name="Nom-contacte" required class="form-control">
+        <!-- //! make it clear about names -->
       <input type="number" name="phone" required class="form-control">
-      <input type="submit" id='submit' value='LOGIN'>
-    </form>
+      <input type="submit" id='submit' value='cree mon compte'>
+      <p>vous avec deja un compte ?<a href="login">se Connectez</a></p>
+      </form>
+    <?php } else { ?> -->
+      <form action="login" method="POST">
+        <h3 style="text-align: center">Merci de vous Connecter</h3>
+        <label><b>Votre Numero</b></label>
+        <input type="number" name="phone" required class="form-control">
+        <p class="error"></p>
+        <?= $error ?>
+        </p>
+        <input type="submit" id='submit' value='LOGIN'>
+        <p>vous n'avec pas de compte ?<a href="login?register=true">se Connectez</a></p>
+      </form>
+      <!-- <?php } ?> -->
   </div>
 </body>
 
