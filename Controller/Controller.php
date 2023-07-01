@@ -30,6 +30,15 @@ class Controller
         }
         return $error;
     }
+    public function old()
+    {
+        $old = array();
+        if (isset($_SESSION["old"])) {
+            $old = $_SESSION["old"];
+            unset($_SESSION["old"]);
+        }
+        return $old;
+    }
     public function redirect(string $path = "/")
     {
         header("location: http://localhost/DAO" . $path);

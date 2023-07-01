@@ -27,4 +27,22 @@ class GroupManager extends Manager
         }
         return false;
     }
+    public function verify($name)
+    {
+        $groupsXml = $this->getXml()->xpath("/messagerie/groupes/groupe/nom");
+
+        return in_array($name, $groupsXml);
+    }
+    public function save($group, $id)
+    {
+        $xml = $this->getXml();
+        $groupsXml = $xml->groupes[0];
+        $groupNode = $groupsXml->addChild("groupe");
+        $group->setId(count($groupsXml->children()));
+        $groupNode->addAttribute('id', $group->getId());
+        $groupNode->addChild('nom', $group->getName());
+        $membres =  $groupNode->addChild('membres');
+        $membres->addChild("contact")->addAttribute('id', $id);
+        $xml->asXML(self::$file);
+    }
 }

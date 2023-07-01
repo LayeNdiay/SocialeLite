@@ -13,7 +13,7 @@ class Group extends Model
     }
 
 
-    public function __construct(int $id, string $name)
+    public function __construct(int $id = 0, string $name)
     {
         $this->name = $name;
         $this->id = $id;
@@ -32,6 +32,15 @@ class Group extends Model
         return self::$groupManager->findById($id);
     }
 
+    public function verify()
+    {
+        return self::$groupManager->verify($this->name);
+    }
+
+    public function save(int $id)
+    {
+        return self::$groupManager->save($this, 1);
+    }
 
 
     /**

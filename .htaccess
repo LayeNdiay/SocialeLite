@@ -4,7 +4,19 @@ RewriteCond %{REQUEST_METHOD} =GET
 RewriteRule ^contacts$ index.php?action=contacts [L] 
 
 RewriteCond %{REQUEST_METHOD} =GET
+RewriteRule ^contacts/create$ index.php?action=createContacts [L] 
+
+RewriteCond %{REQUEST_METHOD} =POST
+RewriteRule ^contacts/create$ index.php?action=createContactsPost [L] 
+
+RewriteCond %{REQUEST_METHOD} =GET
 RewriteRule ^groupes$ index.php?action=groupes [L] 
+
+RewriteCond %{REQUEST_METHOD} =GET
+RewriteRule ^groupes/create$ index.php?action=createGroupes [L] 
+
+RewriteCond %{REQUEST_METHOD} =POST
+RewriteRule ^groupes/create$ index.php?action=createGroupesPost [L] 
 
 RewriteCond %{REQUEST_METHOD} =GET
 RewriteRule ^groupes/([0-9]+)$ index.php?action=Onegroupe&id=$1 [L] 

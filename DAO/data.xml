@@ -19,36 +19,42 @@
         <groupe id="1">
             <nom>Amis proches</nom>
             <membres>
-                <contact id="1" />
-                <contact id="2" />
+                <contact id="1"/>
+                <contact id="2"/>
             </membres>
         </groupe>
         <groupe id="2">
             <nom>Famille</nom>
             <membres>
-                <contact id="1" />
+                <contact id="1"/>
             </membres>
         </groupe>
-    </groupes>
+        <groupe id="3">
+            <nom>test</nom>
+            <membres>
+                <contact id="1"/>
+            </membres>
+        </groupe>
+    <groupe id="4"><nom>test</nom><membres><contact id="1"/></membres></groupe><groupe id="5"><nom>test</nom><membres><contact id="1"/></membres></groupe><groupe id="6"><nom>RR</nom><membres><contact id="1"/></membres></groupe></groupes>
     <messages>
         <message id="1" type="individuel">
-            <expediteur id="1" />
-            <destinataire id="2" />
-            <contenu type="texte">Salut Jane, comment &#xE7;a va ?</contenu>
+            <expediteur id="1"/>
+            <destinataire id="2"/>
+            <contenu type="texte">Salut Thiaba, comment &#xE7;a va ?</contenu>
             <timestamp>2023-06-28 10:00:00</timestamp>
         </message>
         <message id="2" type="groupe">
-            <expediteur id="1" />
-            <groupe id="1" />
+            <expediteur id="1"/>
+            <groupe id="1"/>
             <contenu type="texte">Salut tout le monde !</contenu>
             <timestamp>2023-06-28 11:00:00</timestamp>
         </message>
         <message id="3" type="groupe">
-            <expediteur id="2" />
-            <groupe id="1" />
-            <contenu type="texte">Salut John, &#xE7;a va bien, merci !</contenu>
+            <expediteur id="2"/>
+            <groupe id="1"/>
+            <contenu type="texte">Salut Moussa, &#xE7;a va bien, merci !</contenu>
             <timestamp>2023-06-28 11:05:00</timestamp>
-            <citation id="1" />
+            <citation id="1"/>
         </message>
         <!-- Ajoutez d'autres messages ici -->
     </messages>

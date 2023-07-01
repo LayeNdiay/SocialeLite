@@ -17,6 +17,9 @@ class Message
         $this->idExpediteur = $idExpediteur;
     }
 
+    public function findGroupeMessages(int $id)
+    {
+    }
 
     /**
      * Get the value of Content

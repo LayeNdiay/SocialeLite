@@ -8,6 +8,7 @@ class AuthController  extends Controller
         if ($this->isConnected()) {
             $this->redirect();
         }
+        $error = $this->flash();
     }
     public function loginPost()
     {
