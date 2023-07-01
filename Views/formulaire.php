@@ -74,16 +74,13 @@ if ($info == "new-msg") { ?>
    <!-- nouveau message -->
    <form action="contacts/create" method="POST">
       <div class="mb-3">
-         //! make it clear about names
-
-         <label for="Nom-contacte" class="form-label">Nom Contacte</label>
-         <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="adama dia">
+         <label for="name" class="form-label">Nom Contacte</label>
+         <input type="text" class="form-control" name="name" placeholder="adama dia">
       </div>
       <div class="mb-3">
-         <label for="numero-contact" class="form-label">Numero Contacte</label>
-         <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="774563267">
+         <label for="phone" class="form-label">Numero Contacte</label>
+         <input type="text" class="form-control" name="phone" placeholder="774563267">
       </div>
-
       <div class="mb-3">
          <button tyle="submit" class="btn btn-primary">Crée</button>
       </div>
@@ -95,17 +92,17 @@ if ($info == "new-msg") { ?>
       <!-- discussion instantannee -->
       <div class="listContact">
 
-      <?php foreach ($messages as $message) {
+      <?php foreach ($discusions as $discusion) {
          ?>
-         <a href="<?= "discussion/" . $message['discussion_id'] ?>" class="bullDiscussion">
+         <a href="<?= "discussion/1" ?>" class="bullDiscussion">
             <p>
-            <?= $message['expediteur'] ?>
+            <?= $discusion['contact']->getName() ?>
             </p>
             <p>
-            <?= $message['contenu'] ?>
+            <?= $discusion['message']->getContent() ?>
             </p>
             <span class="time-right">
-            <?= $message['timestamp'] ?>
+            <?= $discusion['message']->getCreatedAt() ?>
             </span>
          </a>
       <?php } ?>

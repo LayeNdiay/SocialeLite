@@ -19,14 +19,14 @@
             <pre class="prettyprint">
              <code class="language-xml">
              <?php
-             highlight_file("../data.xml"); ?>   
+             highlight_file(dirname(__DIR__) . DIRECTORY_SEPARATOR . "DAO" . DIRECTORY_SEPARATOR . "data.xml"); ?>   
             </code>
             </pre>
          </div>
          <div>
             <div class="btn-group">
                <button class="dropdown-toggle logout" data-bs-toggle="dropdown" aria-expanded="false">
-                  Username
+                  <!-- <?=$user->getName(); ?> -->
                </button>
                <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="#">se deconnecter</a></li>
@@ -43,7 +43,12 @@
                   <img width="24" height="24" src="./src/groupe msg.png" alt="groupe-message" />
                   Discussion de Groupe</button>
             </div>
-            <div id="formulaire"></div>
+            <div id="formulaire">
+
+            <!-- <pre style="color:white;">
+               <?php var_dump($discusions); ?>
+            </pre> -->
+            </div>
          </div>
       </div>
    </div>
