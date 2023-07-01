@@ -9,6 +9,7 @@ RewriteRule ^discussion/([0-9]+)$ index.php?action=oneContact&id=$1 [L]
 RewriteCond %{REQUEST_METHOD} =GET
 RewriteRule ^contacts/create$ index.php?action=createContacts [L] 
 
+
 RewriteCond %{REQUEST_METHOD} =POST
 RewriteRule ^contacts/create$ index.php?action=createContactsPost [L] 
 

@@ -34,18 +34,18 @@ class ContactController extends Controller
         if (!isset($_POST["phone"]) || !isset($_POST["name"])) {
             $_SESSION["error"] =  "Le formulaire est incomplet";
             $_SESSION["old"] = ["name" => $_POST["name"], "phone" => $_POST["phone"]];
-            $this->redirect("/contact/create");
+            $this->redirect("/contacts/create");
         }
 
-        $contact = new Contact(0, $_POST["name"], $_POST["phone"]);
 
-        if (Contact::findByPhoneNumber("772374233")) {
+        if (!Contact::findByPhoneNumber($_POST["phone"])) {
+            $contact = new Contact(0, $_POST["name"], $_POST["phone"]);
             $contact->create();
-            $this->redirect("/contact");
+            $this->redirect("/discussion" . '/' . $contact->getId());
         } else {
             $_SESSION["error"] = "Ce numéro de téphone est déjà enrégitré";
             $_SESSION["old"] = ["phone" => $_POST["phone"]];
-            $this->redirect("/contact/create");
+            $this->redirect("/");
         }
     }
 }

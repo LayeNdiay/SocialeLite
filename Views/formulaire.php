@@ -72,67 +72,67 @@ $info = isset($_GET['info']) ? $_GET['info'] : '';
 
 if ($info == "new-msg") { ?>
    <!-- nouveau message -->
-   <form action="contacts/create" method="POST" > 
-   <div class="mb-3">
-      <label for="Nom-contacte" class="form-label">Nom Contacte</label>
-      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="adama dia">
-   </div>
-   <div class="mb-3">
-      <label for="numero-contact" class="form-label">Numero Contacte</label>
-      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="774563267">
-   </div>
+   <form action="contacts/create" method="POST">
+      <div class="mb-3">
+         <label for="Nom-contacte" class="form-label">Nom Contact</label>
+         <input type="text" name="name" class="form-control" id="exampleFormControlInput1" placeholder="adama dia">
+      </div>
+      <div class="mb-3">
+         <label for="numero-contact" class="form-label">Numero Contact</label>
+         <input type="text" name="phone" class="form-control" id="exampleFormControlInput1" placeholder="774563267">
+      </div>
 
-   <div class="mb-3">
-  <button tyle="submit" class="btn btn-primary">Crée</button>  
-   </div>
+      <div class="mb-3">
+         <button tyle="submit" class="btn btn-primary">Crée</button>
+      </div>
    </form>
 
 
 <?php } else if ($info == "private-msg") { ?>
 
-      <!-- discussion instantannee -->
-      <div class="listContact">
+   <!-- discussion instantannee -->
+   <div class="listContact">
 
       <?php foreach ($messages as $message) {
-         ?>
+      ?>
          <a href="<?= "discussion/" . $message['discussion_id'] ?>" class="bullDiscussion">
             <p></p>
-         <?= $message['expediteur'] ?>
+            <?= $message['expediteur'] ?>
             </p>
             <p>
-            <?= $message['contenu'] ?>
+               <?= $message['contenu'] ?>
             </p>
             <span class="time-right">
-            <?= $message['timestamp'] ?>
+               <?= $message['timestamp'] ?>
             </span>
          </a>
       <?php } ?>
-      </div>
-   <?php } else { ?>
+   </div>
+<?php } else { ?>
 
-      <!-- groupes -->
-      <form method="POST" action="">
+   <!-- groupes -->
+   <form method="POST" action="">
 
-         <label for="discussion" class="form-label">Nom du groupe</label>
-         <select class="form-select" aria-label="Discussion" id="discussion">
-         <?php foreach ($groupes as $groupe): ?>
+      <label for="discussion" class="form-label">Nom du groupe</label>
+      <select class="form-select" aria-label="Discussion" id="discussion">
+         <?php foreach ($groupes as $groupe) : ?>
             <option value=<?= $groupe ?>><?= $groupe ?></option>
          <?php endforeach; ?>
-         </select>
+      </select>
 
-         <label for="citer_message" class="form-label">citer un message du chat</label>
-         <select class="form-select" aria-label="citer un message de la discussion" id="citer_message">
-         <?php foreach ($messages as $message): ?>
+      <label for="citer_message" class="form-label">citer un message du chat</label>
+      <select class="form-select" aria-label="citer un message de la discussion" id="citer_message">
+         <?php foreach ($messages as $message) : ?>
             <option value=<?= $message['contenu'] ?>><?= $message['contenu'] ?></option>
          <?php endforeach; ?>
-         </select>
-         <div class="mb-3">
-            <label for="message" class="form-label">votre message</label>
-            <textarea class="form-control" id="message" rows="3"></textarea>
-         </div>
-      </form>
+      </select>
+      <div class="mb-3">
+         <label for="message" class="form-label">votre message</label>
+         <textarea class="form-control" id="message" rows="3"></textarea>
+      </div>
+   </form>
 
-   <?php } ?>
+<?php } ?>
 
 <style>
    .bullDiscussion {

@@ -27,7 +27,6 @@ class Message
         self::initialise();
         $discussions = self::$messageManger->find($id);
         for ($i = 0; $i < count($discussions); $i++) {
-            # code...
             $discussions[$i]["contact"] = Contact::findById(intval($discussions[$i]["contact"]));
         }
         return $discussions;

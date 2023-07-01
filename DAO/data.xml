@@ -18,6 +18,10 @@
             <nom>Assane</nom>
             <telephone>+9876543219</telephone>
         </contact>
+        <contact id="5">
+            <nom>admin</nom>
+            <telephone>867647</telephone>
+        </contact>
     </contacts>
     <groupes>
         <groupe id="1">
@@ -44,12 +48,12 @@
             <messages>
                 <message id="1">
                     <expediteur id="1" />
-                    <contenu type="texte">Salut Jane, comment ça va ?</contenu>
+                    <contenu type="texte">Salut Jane, comment &#xE7;a va ?</contenu>
                     <created_at>2023-06-28 10:00:00</created_at>
                 </message>
                 <message id="3">
                     <expediteur id="2" />
-                    <contenu type="texte">Ça va bien, merci !</contenu>
+                    <contenu type="texte">&#xC7;a va bien, merci !</contenu>
                     <created_at>2023-06-28 10:02:00</created_at>
                     <citation id="1" />
                 </message>
@@ -87,7 +91,8 @@
                 </message>
                 <message id="8">
                     <expediteur id="2" />
-                    <contenu type="texte">J'ai une idée, pourquoi ne pas organiser une sortie ce
+                    <contenu type="texte">J'ai une id&#xE9;e, pourquoi ne pas organiser une sortie
+                        ce
                         weekend ?</contenu>
                     <created_at>2023-06-28 11:15:00</created_at>
                 </message>
@@ -101,12 +106,12 @@
             <messages>
                 <message id="1">
                     <expediteur id="1" />
-                    <contenu type="texte">Salut Jane, comment ça va ?</contenu>
+                    <contenu type="texte">Salut Jane, comment &#xE7;a va ?</contenu>
                     <created_at>2023-06-28 10:00:00</created_at>
                 </message>
                 <message id="3">
                     <expediteur id="2" />
-                    <contenu type="texte">Ça va bien, merci !</contenu>
+                    <contenu type="texte">&#xC7;a va bien, merci !</contenu>
                     <created_at>2023-06-28 10:02:00</created_at>
                     <citation id="1" />
                 </message>
@@ -151,7 +156,7 @@
                 </message>
                 <message id="7">
                     <expediteur id="3" />
-                    <contenu type="texte">Tout va bien de notre côté !</contenu>
+                    <contenu type="texte">Tout va bien de notre c&#xF4;t&#xE9; !</contenu>
                     <created_at>2023-06-28 13:02:00</created_at>
                     <citation id="6" />
                 </message>
