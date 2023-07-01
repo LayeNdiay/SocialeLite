@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-  let monBoutons = document.getElementsByTagName('button');
+  let monBoutons = document.querySelectorAll('.monButton');
   let xhr = new XMLHttpRequest();
 
   function clickhandler() {

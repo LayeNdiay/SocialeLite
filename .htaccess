@@ -32,6 +32,7 @@ RewriteCond %{REQUEST_METHOD} =POST
 RewriteRule ^login$ index.php?action=loginPost [L] 
 
 
+RewriteRule ^discussionGroup/([0-9]+)$ ./Views/discussionGroup.php?id=$1 [L] 
 
 # Rediriger les requêtes GET pour './Views/formulaire.php'
 RewriteCond %{REQUEST_METHOD} =GET

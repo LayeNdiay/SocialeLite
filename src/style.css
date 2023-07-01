@@ -183,3 +183,7 @@ body {
 .chevron-down:hover {
   opacity: 1;
 }
+.chevron {
+  text-decoration: none;
+  color: #666;
+}
