@@ -18,7 +18,7 @@
             <pre class="prettyprint">
              <code class="language-xml">
              <?php
-             highlight_file("../whatsapp.xml"); ?>   
+             highlight_file("../DAO/data.xml"); ?>   
             </code>
             </pre>
          </div>
