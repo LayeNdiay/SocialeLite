@@ -1,5 +1,5 @@
 <?php
-$cotrollerPath = __DIR__  . DIRECTORY_SEPARATOR . "Controller" . DIRECTORY_SEPARATOR;
+$cotrollerPath = __DIR__ . DIRECTORY_SEPARATOR . "Controller" . DIRECTORY_SEPARATOR;
 require_once $cotrollerPath . "HomeController.php";
 require_once $cotrollerPath . "ContactController.php";
 require_once $cotrollerPath . "GroupController.php";

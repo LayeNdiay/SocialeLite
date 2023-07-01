@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', function () {
   let monBoutons = document.getElementsByTagName('button');
   let xhr = new XMLHttpRequest();
@@ -23,11 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     // Préparer la requête
-    xhr.open(
-      'GET',
-      'formulaire/' + encodeURIComponent(info),
-      true
-    );
+    xhr.open('GET', 'formulaire/' + encodeURIComponent(info), true);
     // Envoyer la requête
     xhr.send();
   }

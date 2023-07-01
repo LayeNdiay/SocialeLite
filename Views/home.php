@@ -1,5 +1,3 @@
-<?php define('ROOT', 'C:/xampp/htdocs/SocialeLite/');
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,8 +5,8 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?lang=xml&amp;skin=sunburst"></script>
-   <script src="./src/home.js"></script>
+   <script
+      src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?lang=xml&amp;skin=sunburst"></script>
    <title>Document</title>
 </head>
 
@@ -20,12 +18,12 @@
             <pre class="prettyprint">
              <code class="language-xml">
              <?php
-               highlight_file("whatsapp.xml"); ?>   
+             highlight_file("../DAO/data.xml"); ?>   
             </code>
             </pre>
          </div>
          <div class="bootstrap-utilities">
-            <h2 id="iii">Demarrer Une une</h2>
+            <h2 id="bullDiscussion">Demarrer Une une</h2>
             <div class="buttons">
                <button data-info="private-msg">
                   <img width="24" height="24" src="./src/new msg.png" alt="private-message" />
@@ -44,7 +42,13 @@
 </body>
 
 </html>
+<script src="./src/home.js"></script>
 <style>
+   .formulaire {
+      max-height: 600px;
+      overflow: scroll;
+   }
+
    h2 {
       margin-top: 30px;
       color: white;
@@ -77,6 +81,10 @@
       height: 100%;
       width: 100%;
       margin: 0;
+      <<<<<<< HEAD padding: 0;
+      box-sizing: border-box;
+      background-color: rgb(40 44 51);
+      =======>>>>>>>fbbebefe6d344152aaa3d5e007c2a3f21624b3fa
    }
 
    .codeXML {
