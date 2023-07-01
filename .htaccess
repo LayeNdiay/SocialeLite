@@ -7,5 +7,9 @@ RewriteRule ^contacts$ index.php?action=contacts [L]
 RewriteCond %{REQUEST_METHOD} =GET
 RewriteRule ^formulaire/(.*)$ ./Views/formulaire.php?info=$1 [L]
 
+RewriteRule ^home$ ./Views/home.php/ [L]
+
+RewriteRule ^discussion/(.*)$ ./Views/discussion.php?discussion_id=$1 [L]
+
 RewriteRule assets/(.*)$ assets/$1 [L]
 # RewriteRule [^index.php]  index.php?action=erreur
