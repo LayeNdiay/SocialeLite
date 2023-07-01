@@ -22,6 +22,7 @@ class AuthController  extends Controller
             $_SESSION["error"] = "Numéro de téléphone inconnu";
             $this->login();
         } else {
+            $this->verifySession();
             $_SESSION["user"] = $user->getId();
             $this->redirect("/");
         }
