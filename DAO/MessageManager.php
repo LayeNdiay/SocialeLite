@@ -16,6 +16,7 @@ class MessageManager extends Manager
             $discusionItem = $discusionXml->xpath("participants/participant[@id=$id]");
             if (!empty($discusionItem)) {
                 $discusion = [];
+                $discusion['id'] = intval($discusionItem[0]->xpath("../..")[0]->attributes()['id']);
                 $discusion["contact"] = $discusionItem[0]->xpath("../participant[@id!=$id]")[0]->attributes()['id'];
                 $lastMessage = $discusionXml->xpath("messages/message[last()]");
                 $message = false;
