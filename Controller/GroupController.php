@@ -27,7 +27,7 @@ class GroupController extends Controller
         if (!isset($_POST["name"])) {
             $_SESSION["error"] =  "Le champ groupe est obligatoire";
             $_SESSION["old"] = ["name" => $_POST["name"]];
-            $this->redirect("/groupe/create");
+            $this->redirect("/groupes/create");
         }
 
         $group = new Group(0, $_POST["name"]);
