@@ -8,10 +8,9 @@ class HomeController extends Controller
         $this->requiredAuth();
         $user = $this->user();
 
-        $discusions = Message::findMydiscussion($user->getId());
-   
+        $discusions = Message::findMydiscussions($user->getId());
+
 
         require $this->viewsPath . "index.php";
     }
-
 }

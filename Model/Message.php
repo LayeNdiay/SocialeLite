@@ -22,7 +22,7 @@ class Message
         $this->createdAt = $date;
         self::initialise();
     }
-    public static function findMydiscussion(int $id)
+    public static function findMydiscussions(int $id)
     {
         self::initialise();
         $discussions = self::$messageManger->find($id);

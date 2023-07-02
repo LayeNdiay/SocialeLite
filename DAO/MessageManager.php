@@ -30,4 +30,7 @@ class MessageManager extends Manager
         }
         return $discusions;
     }
+    public function findById()
+    {
+    }
 }
