@@ -27,4 +27,10 @@ class AuthController  extends Controller
             $this->redirect("/");
         }
     }
+    public function logout()
+    {
+        $this->requiredAuth();
+        unset($_SESSION["user"]);
+        $this->redirect("/login");
+    }
 }

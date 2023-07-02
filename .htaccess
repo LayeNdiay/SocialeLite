@@ -29,7 +29,10 @@ RewriteCond %{REQUEST_METHOD} =GET
 RewriteRule ^login$ index.php?action=login [L] 
 
 RewriteCond %{REQUEST_METHOD} =POST
-RewriteRule ^login$ index.php?action=loginPost [L] 
+RewriteRule ^login$ index.php?action=loginPost [L]
+
+RewriteCond %{REQUEST_METHOD} =POST
+RewriteRule ^logout$ index.php?action=logout [L] 
 
 
 RewriteRule ^discussionGroup/([0-9]+)$ ./Views/discussionGroup.php?id=$1 [L] 

@@ -1,36 +1,69 @@
 <?php
+
+use function PHPSTORM_META\type;
+
 require_once "Manager.php";
 class MessageManager extends Manager
 {
-    private static $class;
-    public function __construct(string $class)
+    private string   $class;
+    private string  $contactClass;
+    private string  $groupeClasse;
+    public function __construct(string $class, string $contact, string $group)
     {
-        self::$class = $class;
+        $this->class = $class;
+        $this->contactClass = $contact;
+        $this->groupeClasse = $group;
     }
     public function find(int $id)
     {
-        $discusionsXml = $this->getXml()->xpath("/messagerie/discussions/discussion[@type='individuel']");
-        $discusions = [];
-        foreach ($discusionsXml as $discusionXml) {
+        $discussionsXml = $this->getXml()->xpath("/messagerie/discussions/discussion[@type='individuel']");
+        $discussions = [];
+        foreach ($discussionsXml as $discussionXml) {
 
-            $discusionItem = $discusionXml->xpath("participants/participant[@id=$id]");
-            if (!empty($discusionItem)) {
-                $discusion = [];
-                $discusion['id'] = intval($discusionItem[0]->xpath("../..")[0]->attributes()['id']);
-                $discusion["contact"] = $discusionItem[0]->xpath("../participant[@id!=$id]")[0]->attributes()['id'];
-                $lastMessage = $discusionXml->xpath("messages/message[last()]");
+            $discussionItem = $discussionXml->xpath("participants/participant[@id=$id]");
+            if (!empty($discussionItem)) {
+                $discussion = [];
+                $discussion['id'] = intval($discussionItem[0]->xpath("../..")[0]->attributes()['id']);
+                $discussion["contact"] = $discussionItem[0]->xpath("../participant[@id!=$id]")[0]->attributes()['id'];
+                $lastMessage = $discussionXml->xpath("messages/message[last()]");
                 $message = false;
                 if (!empty($lastMessage)) {
                     $lastMessage = $lastMessage[0];
-                    $message = new self::$class(intval($lastMessage->attributes()['id']), $lastMessage->contenu, new DateTime($lastMessage[0]->created_at), intval($lastMessage->expediteur->attributes()['id']));
+                    $expediteur =  $this->contactClass::findById(intval($lastMessage->expediteur->attributes()['id']));
+                    $message = new $this->class(intval($lastMessage->attributes()['id']), $lastMessage->contenu, new DateTime($lastMessage[0]->created_at), $expediteur);
                 }
-                $discusion["message"] = $message;
-                array_push($discusions, $discusion);
+                $discussion["message"] = $message;
+                array_push($discussions, $discussion);
             }
         }
-        return $discusions;
+        return $discussions;
     }
-    public function findById()
+    public function findById(int $id, int $idEmeteur)
     {
+        $discussionsXml = $this->getXml()->xpath("/messagerie/discussions/discussion[@id=$id]");
+        if (empty($discussionsXml)) {
+            return [];
+        }
+        $discussionsXml = $discussionsXml[0];
+        $discussions = [];
+        $type = $discussionsXml->attributes()["type"];
+        if ($type == "individuel") {
+            $recepteur = $discussionsXml->xpath("participants/participant[@id!=$idEmeteur]")[0];
+            $discussions["recepteur"] = $this->contactClass::findById(intval(($recepteur->attributes()["id"])));
+        } else {
+            $recepteur = $discussionsXml->xpath("groupe")[0]->attributes()["id"];
+            $discussions["groupe"] = $this->groupeClasse::findById(intval($recepteur));
+        }
+        $messagesXml = $discussionsXml->xpath("messages/message");
+        $messages = [];
+        foreach ($messagesXml as $messageXml) {
+            $expediteur =  $this->contactClass::findById(intval($messageXml->expediteur->attributes()['id']));
+
+            $message = new $this->class(intval($messageXml->attributes()['id']), $messageXml->contenu, new DateTime($messageXml[0]->created_at), $expediteur);
+            array_push($messages, $message);
+        }
+        $discussions["messages"] = $messages;
+
+        return $discussions;
     }
 }

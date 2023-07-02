@@ -36,9 +36,9 @@ class Contact extends Model
         self::initialise();
         return self::$contactManager->findByPhoneNumber($phone);
     }
-    public function create()
+    public function create(int $id)
     {
-        return self::$contactManager->create($this);
+        return self::$contactManager->create($this, $id);
     }
     /**
      * Get the value of id

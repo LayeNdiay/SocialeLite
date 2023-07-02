@@ -31,4 +31,6 @@ if ($action === "accueil") {
     $contact->store();
 } elseif ($action === "oneContact") {
     $contact->view(intval($_GET["id"]));
+} elseif ($action === "logout") {
+    $auth->logout();
 }

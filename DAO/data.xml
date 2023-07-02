@@ -22,7 +22,15 @@
             <nom>admin</nom>
             <telephone>867647</telephone>
         </contact>
-    <contact id="6"><nom/><telephone/></contact></contacts>
+        <contact id="6">
+            <nom>admin</nom>
+            <telephone>000000000000000</telephone>
+        </contact>
+        <contact id="7">
+            <nom>SENAP</nom>
+            <telephone>92876544</telephone>
+        </contact>
+    </contacts>
     <groupes>
         <groupe id="1">
             <nom>Amis proches</nom>
@@ -161,6 +169,12 @@
                     <citation id="6"/>
                 </message>
             </messages>
+        </discussion>
+        <discussion id="6" type="individuel">
+            <participants>
+                <participant id="7" />
+                <participant id="1" />
+            </participants>
         </discussion>
     </discussions>
 </messagerie>

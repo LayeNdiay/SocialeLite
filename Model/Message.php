@@ -1,24 +1,25 @@
 <?php
 require_once "Contact.php";
+require_once "Group.php";
 require_once DAO . "MessageManager.php";
 class Message
 {
     private int $id;
-    private int $idExpediteur;
+    private Contact $expediteur;
     private string $content;
     private  DateTime $createdAt;
     private static  $messageManger;
     public static function initialise()
     {
-        self::$messageManger = new MessageManager(__CLASS__);
+        self::$messageManger = new MessageManager(__CLASS__, Contact::class, Group::class);
     }
 
 
-    public function __construct(int $id, string $content, DateTime $date, int $idExpediteur)
+    public function __construct(int $id, string $content, DateTime $date, Contact $expediteur)
     {
         $this->id = $id;
         $this->content = $content;
-        $this->idExpediteur = $idExpediteur;
+        $this->expediteur = $expediteur;
         $this->createdAt = $date;
         self::initialise();
     }
@@ -32,8 +33,10 @@ class Message
         return $discussions;
     }
 
-    public static function findGroupeMessages(int $id)
+    public static function findMydiscussion(int $id, int $expediteur = 0)
     {
+        self::initialise();
+        return self::$messageManger->findById($id, $expediteur);
     }
 
     /**
@@ -78,21 +81,21 @@ class Message
     }
 
     /**
-     * Get the value of idExpediteur
+     * Get the value of expediteur
      */
-    public function getIdExpediteur()
+    public function getexpediteur()
     {
-        return $this->idExpediteur;
+        return $this->expediteur;
     }
 
     /**
-     * Set the value of idExpediteur
+     * Set the value of expediteur
      *
      * @return  self
      */
-    public function setIdExpediteur($idExpediteur)
+    public function setexpediteur($expediteur)
     {
-        $this->idExpediteur = $idExpediteur;
+        $this->expediteur = $expediteur;
 
         return $this;
     }

@@ -2,10 +2,12 @@
 require_once "Manager.php";
 class GroupManager extends Manager
 {
-    private static $class;
-    public function __construct(string $class)
+    private string $class;
+    private string $contactClass;
+    public function __construct(string $class, string $contactClass)
     {
-        self::$class = $class;
+        $this->class = $class;
+        $this->contactClass = $contactClass;
     }
     public function find(int $id)
     {
@@ -14,7 +16,15 @@ class GroupManager extends Manager
         if (!empty($groupsXml)) {
             foreach ($groupsXml as $group) {
                 $goupAppartient = $group->xpath("../..");
-                array_push($groups, new self::$class(intval($goupAppartient[0]->attributes()["id"]), $goupAppartient[0]->nom));
+                $contactXml = $goupAppartient[0]->xpath("membres/contact");
+                $contacts = [];
+                foreach ($contactXml as $contact) {
+                    $contact = $this->contactClass::findById(intval($contact->attributes()["id"]));
+                    $contacts[] = $contact;
+                }
+                $group = new $this->class(intval($goupAppartient[0]->attributes()["id"]), $goupAppartient[0]->nom);
+                $group->contacts = $contacts;
+                $groups[] = $group;
             }
         }
         return $groups;
@@ -23,7 +33,15 @@ class GroupManager extends Manager
     {
         $groups = $this->getXml()->xpath("/messagerie/groupes/groupe[@id=$id]");
         if (!empty($groups)) {
-            return new self::$class(intval($groups[0]->attributes()["id"]), $groups[0]->nom);
+            $contacts = [];
+            $group = new $this->class(intval($groups[0]->attributes()["id"]), $groups[0]->nom);
+            $contactXml = $groups[0]->xpath("membres/contact");
+            foreach ($contactXml as $contact) {
+                $contact = $this->contactClass::findById(intval($contact->attributes()["id"]));
+                array_push($contacts, $contact);
+            }
+            $group->contacts = $contacts;
+            return $group;
         }
         return false;
     }
