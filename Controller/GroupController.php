@@ -6,12 +6,14 @@ class GroupController extends Controller
     public function index()
     {
         $groups = Group::find(1);
+        var_dump($groups);
     }
     public function viewOne(int $id)
     {
         $this->requiredAuth();
         $groups = Group::findById($id);
-        var_dump($groups);
+        $discusions = Message::findMydiscussion($id, 0);
+        var_dump($discusions);
     }
     public function create()
     {

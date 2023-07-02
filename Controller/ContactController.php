@@ -19,7 +19,7 @@ class ContactController extends Controller
     {
         $user = $this->user();
 
-        $discusions = Message::findMydiscussion($user->getId());
+        $discusions = Message::findMydiscussion($id, $user->getId());
         var_dump($discusions);
     }
     public function create()
@@ -40,8 +40,8 @@ class ContactController extends Controller
 
         if (!Contact::findByPhoneNumber($_POST["phone"])) {
             $contact = new Contact(0, $_POST["name"], $_POST["phone"]);
-            $contact->create();
-            $this->redirect("/discussion" . '/' . $contact->getId());
+            $id = $contact->create($this->user()->getId());
+            $this->redirect("/discussion" . '/' . $id);
         } else {
             $_SESSION["error"] = "Ce numéro de téphone est déjà enrégitré";
             $_SESSION["old"] = ["phone" => $_POST["phone"]];

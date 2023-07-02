@@ -37,7 +37,7 @@ class ContactManager extends Manager
         }
         return false;
     }
-    public function create($contact)
+    public function create($contact, $id)
     {
         $xml = $this->getXml();
         $contactsXml = $xml->contacts[0];
@@ -46,6 +46,19 @@ class ContactManager extends Manager
         $contactNode->addChild('nom', $contact->getName());
         $contactNode->addChild('telephone', $contact->getTelephone());
         $contactNode->addAttribute('id', $contact->getId());
+        $discussions = $xml->discussions[0];
+        $idDiscussion = count($discussions->children());
+        $discussion = $discussions->addChild('discussion');
+        $discussion->addAttribute("id", $idDiscussion);
+        $discussion->addAttribute("type", "individuel");
+        $participants = $discussion->addChild("participants");
+        $participants->addChild("participant")->addAttribute('id', $contact->getId());
+        $participants->addChild("participant")->addAttribute('id', $id);
+
+
+
         $xml->asXML(self::$file);
+
+        return $idDiscussion;
     }
 }
