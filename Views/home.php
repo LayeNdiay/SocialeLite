@@ -26,7 +26,7 @@
          <div>
             <div class="btn-group">
                <button class="dropdown-toggle logout" data-bs-toggle="dropdown" aria-expanded="false">
-                  <!-- <?=$user->getName(); ?> -->
+                  <?=$user->getName(); ?>
                </button>
                <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="#">se deconnecter</a></li>

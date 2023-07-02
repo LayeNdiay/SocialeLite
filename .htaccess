@@ -38,7 +38,7 @@ RewriteRule ^discussionGroup/([0-9]+)$ ./Views/discussionGroup.php?id=$1 [L]
 RewriteCond %{REQUEST_METHOD} =GET
 RewriteRule ^formulaire/(.*)$ ./Views/formulaire.php?info=$1 [L]
 
-RewriteRule ^home$ ./Views/home.php/ [L]
+RewriteRule ^home$ ./Views/index.php/ [L]
 
 RewriteRule ^discussion/(.*)$ ./Views/discussion.php?discussion_id=$1 [L]
 

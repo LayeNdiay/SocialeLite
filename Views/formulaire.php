@@ -18,7 +18,7 @@ $contacts = array(
 );
 
 //groupes
-$groupes = [["name" => "DIC1", "id" => 1], ["name" => "DIC2", "id" => 2]];
+// $groupes = [["name" => "DIC1", "id" => 1], ["name" => "DIC2", "id" => 2]];
 
 
 //messages

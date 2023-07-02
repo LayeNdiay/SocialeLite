@@ -1,35 +1,30 @@
 document.addEventListener('DOMContentLoaded', function () {
-  let monBoutons = document.querySelectorAll('.monButton');
+  let boutons = document.querySelectorAll('.monButton');
+  let forms = document.querySelectorAll('.form');
   let xhr = new XMLHttpRequest();
 
   function clickhandler() {
-    for (let monBouton of monBoutons) {
-      monBouton.classList.remove('btn-primary');
-      monBouton.classList.remove('btn');
+    for (let bouton of boutons) {
+      bouton.classList.remove('btn-primary');
+      bouton.classList.remove('btn');
     }
-    // Récupérer les informations à envoyer
+    for (let form of forms) {
+      form.classList.remove('active');
+    }
+    //   // Récupérer les informations à envoyer
     let info = this.getAttribute('data-info');
     this.className = 'btn btn-primary';
-    // Gérer la réponse
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState === 4 && xhr.status === 200) {
-        var modalBody = document.getElementById('formulaire');
-        // alert(xhr.response/Text);
-        modalBody.innerHTML = xhr.responseText;
-      } else if (xhr.readyState === 4 && xhr.status !== 200) {
-        alert("Une erreur s'est produite lors du chargement du formulaire.");
-      }
-    };
 
-    // Préparer la requête
-    xhr.open('GET', 'formulaire/' + encodeURIComponent(info), true);
-    // Envoyer la requête
-    xhr.send();
+    for (let form of forms) {
+      if (form.classList.contains(info)) {
+        form.classList.add('active');
+      }
+    }
   }
 
-  for (let monBouton of monBoutons) {
-    monBouton.classList.remove('btn-primary');
-    monBouton.addEventListener('click', clickhandler);
+  for (let bouton of boutons) {
+    bouton.classList.remove('btn-primary');
+    bouton.addEventListener('click', clickhandler);
   }
 });
 
