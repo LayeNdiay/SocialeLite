@@ -23,16 +23,15 @@
             <pre class="prettyprint">
              <code class="language-xml">
              <?php
-             highlight_file("../DAO/data.xml"); ?>   
-            </code>
+             highlight_file(dirname(__DIR__) . DIRECTORY_SEPARATOR . "DAO" . DIRECTORY_SEPARATOR . "data.xml"); ?>   
+             </code>
             </pre>
          </div>
          <div class="formulaire">
-
             <section class="msger">
                <header class="msger-header">
                   <div class="msger-header-title">
-                     <a class="material-symbols-outlined chevron" href="/SocialeLite/home">
+                     <a class="material-symbols-outlined chevron" href="?private-msg">
                         <i class="fa fa-chevron-left" style="font-size:24px"></i>
                      </a> SimpleChat
                   </div>
@@ -43,24 +42,19 @@
                         <div class="msg-info">
                            <div class="msg-info-name">Azprime</div>
                            <div class="msg-info-time">12:45
-                              <div class="btn-group">
-                                 <!-- <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                    Action
-                                 </button> -->
-                                 <button class="chevron-down dropdown-toggle" data-bs-toggle="dropdown"></button>
+                              <div class="btn-group"> <button class="chevron-down dropdown-toggle"
+                                    data-bs-toggle="dropdown"></button>
                                  <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="#">Citer ce message</a></li>
-
                                  </ul>
                               </div>
-
-
                            </div>
                         </div>
-
                         <div class="msg-text">
-                           bonjour 😄
+                           <pre>
+
+                              <?php var_dump($discusions); ?>
+                           </pre>
                         </div>
                      </div>
                   </div>
@@ -75,7 +69,6 @@
                      </div>
                   </div>
                </main>
-
                <form class="msger-inputarea">
                   <input type="text" class="msger-input" placeholder="Votre message." />
                   <button type="submit" class="msger-send-btn">envoyer

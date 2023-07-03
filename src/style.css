@@ -6,10 +6,6 @@
   --right-msg-bg: #579ffb;
 }
 
-html {
-  box-sizing: border-box;
-}
-
 *,
 *:before,
 *:after {
@@ -30,13 +26,13 @@ body {
 
 .codeXML {
   margin-left: 0px;
-  padding-right: 10px;
+  /* padding-right: 10px; */
   display: flex;
   width: 50%;
   max-height: 600px;
 }
 
-.container {
+.contenant {
   height: 100%;
   width: 100%;
 }
