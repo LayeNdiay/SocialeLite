@@ -30,7 +30,7 @@
             <nom>SENAP</nom>
             <telephone>92876544</telephone>
         </contact>
-    </contacts>
+    <contact id="8"><nom>arouna keita</nom><telephone>777923564</telephone></contact></contacts>
     <groupes>
         <groupe id="1">
             <nom>Amis proches</nom>
@@ -172,9 +172,9 @@
         </discussion>
         <discussion id="6" type="individuel">
             <participants>
-                <participant id="7" />
-                <participant id="1" />
+                <participant id="7"/>
+                <participant id="1"/>
             </participants>
         </discussion>
-    </discussions>
+    <discussion id="7" type="individuel"><participants><participant id="8"/><participant id="4"/></participants></discussion></discussions>
 </messagerie>

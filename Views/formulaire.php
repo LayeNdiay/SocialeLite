@@ -18,7 +18,7 @@ $contacts = array(
 );
 
 //groupes
-// $groupes = [["name" => "DIC1", "id" => 1], ["name" => "DIC2", "id" => 2]];
+$groupes = [["name" => "DIC1", "id" => 1], ["name" => "DIC2", "id" => 2]];
 
 
 //messages
@@ -63,12 +63,7 @@ $messages = array(
 
 );
 
-
-
-
-
 $info = isset($_GET['info']) ? $_GET['info'] : '';
-
 
 if ($info == "new-msg") { ?>
    <!-- nouveau message -->
@@ -94,20 +89,21 @@ if ($info == "new-msg") { ?>
 
       <?php foreach ($discusions as $discusion) {
          ?>
-         <a href="<?= "discussion/1" ?>" class="bullDiscussion">
+         <a href=<?= "discussion/1" ?> class="bullDiscussion">
             <p>
             <?= $discusion['contact']->getName() ?>
             </p>
             <p>
-            <?= $discusion['message']->getContent() ?>
+            <?php echo ($discusion['message']) ? $discusion['message']->getContent() : "Vous n'avez pas de message" ?>
             </p>
             <span class="time-right">
-            <?= $discusion['message']->getCreatedAt() ?>
+            <?php echo ($discusion['message']) ? $discusion['message']->getCreatedAt()->format("H:i") : '' ?>
+          
             </span>
          </a>
       <?php } ?>
       </div>
-   <?php } else { ?>
+   <?php } elseif($info == "group-msg") { ?>
 
       <!-- groupes -->
       <div class="listContact listgroupe">
