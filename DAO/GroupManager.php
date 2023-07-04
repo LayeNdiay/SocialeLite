@@ -40,6 +40,9 @@ class GroupManager extends Manager
                 $contact = $this->contactClass::findById(intval($contact->attributes()["id"]));
                 array_push($contacts, $contact);
             }
+            $discussions = $this->getXml()->xpath("/messagerie/discussions/discussion[@type='groupe']/groupe[@id=$id]");
+            $discussions = $discussions[0]->xpath("..");
+            $group->idDiscussion = intval($discussions[0]->attributes()["id"]);
             $group->contacts = $contacts;
             return $group;
         }
@@ -61,6 +64,14 @@ class GroupManager extends Manager
         $groupNode->addChild('nom', $group->getName());
         $membres =  $groupNode->addChild('membres');
         $membres->addChild("contact")->addAttribute('id', $id);
+        $discussions = $xml->discussions[0];
+        $idDiscussion = count($discussions->children());
+        $discussion = $discussions->addChild('discussion');
+        $discussion->addAttribute("id", $idDiscussion);
+        $discussion->addAttribute("type", "groupe");
+        $discussion->addChild("groupe")->addAttribute('id', $group->getId());
+
         $xml->asXML(self::$file);
+        return $idDiscussion;
     }
 }

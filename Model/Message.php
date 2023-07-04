@@ -7,6 +7,7 @@ class Message
     private int $id;
     private Contact $expediteur;
     private string $content;
+    private string $type;
     private  DateTime $createdAt;
     private static  $messageManger;
     private int $citation;
@@ -16,13 +17,14 @@ class Message
     }
 
 
-    public function __construct(int $id, string $content, DateTime $date, Contact $expediteur, int $citaion)
+    public function __construct(int $id, string $content, DateTime $date, Contact $expediteur, int $citaion, string $type)
     {
         $this->id = $id;
         $this->content = $content;
         $this->expediteur = $expediteur;
         $this->createdAt = $date;
         $this->citation = $citaion;
+        $this->type = $type;
         self::initialise();
     }
     public function create(int $idDisussion)
@@ -142,6 +144,26 @@ class Message
     public function setCitation($citation)
     {
         $this->citation = $citation;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of type
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * Set the value of type
+     *
+     * @return  self
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
 
         return $this;
     }

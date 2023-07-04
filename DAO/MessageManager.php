@@ -35,7 +35,7 @@ class MessageManager extends Manager
                         $idCitation = intval($citation[0]->attributes()["id"]);
                     }
                     $expediteur =  $this->contactClass::findById(intval($lastMessage->expediteur->attributes()['id']));
-                    $message = new $this->class(intval($lastMessage->attributes()['id']), $lastMessage->contenu, new DateTime($lastMessage[0]->created_at), $expediteur, $idCitation);
+                    $message = new $this->class(intval($lastMessage->attributes()['id']), $lastMessage->contenu, new DateTime($lastMessage[0]->created_at), $expediteur, $idCitation, $lastMessage->contenu[0]->attributes()["type"]);
                 }
                 $discussion["message"] = $message;
                 array_push($discussions, $discussion);
@@ -69,7 +69,7 @@ class MessageManager extends Manager
                 $idCitation = intval($citation[0]->attributes()["id"]);
             }
 
-            $message = new $this->class(intval($messageXml->attributes()['id']), $messageXml->contenu, new DateTime($messageXml[0]->created_at), $expediteur, $idCitation);
+            $message = new $this->class(intval($messageXml->attributes()['id']), $messageXml->contenu, new DateTime($messageXml[0]->created_at), $expediteur, $idCitation, $messageXml->contenu[0]->attributes()["type"]);
             array_push($messages, $message);
         }
         $discussions["messages"] = $messages;
@@ -78,14 +78,21 @@ class MessageManager extends Manager
     }
     public function save($message, int $id)
     {
-        $discussionsXml = $this->getXml()->xpath("/messagerie/discussions/discussion[@id=$id]")[0];
+        $xml = $this->getXml();
+        $discussionsXml = $xml->xpath("/messagerie/discussions/discussion[@id=$id]")[0];
         $messages = $discussionsXml->messages;
         if (count($discussionsXml->messages) <= 0) {
             $messages = $discussionsXml->addChild("messages");
         }
-        $message = $messages->addChild("message");
-        $message->addChild("expediteur")->addAttribute("id", count($discussionsXml->messages));
-
-        var_dump($discussionsXml);
+        $message->setId(count($discussionsXml->messages));
+        $messageXml = $messages->addChild("message");
+        $messageXml->addAttribute("id", $message->getId());
+        $messageXml->addChild("expediteur")->addAttribute("id", $id);
+        $messageXml->addChild("contenu", $message->getContent())->addAttribute("type", $message->getType());
+        $messageXml->addChild("created_at", $message->getCreatedAt()->format('Y-m-d H:i:s'));
+        if ($message->getCitation() > 0) {
+            $messageXml->addChild("citation")->addAttribute("id", $message->getCitation());
+        }
+        $xml->asXML(self::$file);
     }
 }
