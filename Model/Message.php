@@ -9,19 +9,25 @@ class Message
     private string $content;
     private  DateTime $createdAt;
     private static  $messageManger;
+    private int $citation;
     public static function initialise()
     {
         self::$messageManger = new MessageManager(__CLASS__, Contact::class, Group::class);
     }
 
 
-    public function __construct(int $id, string $content, DateTime $date, Contact $expediteur)
+    public function __construct(int $id, string $content, DateTime $date, Contact $expediteur, int $citaion)
     {
         $this->id = $id;
         $this->content = $content;
         $this->expediteur = $expediteur;
         $this->createdAt = $date;
+        $this->citation = $citaion;
         self::initialise();
+    }
+    public function create(int $idDisussion)
+    {
+        return self::$messageManger->save($this, $idDisussion);
     }
     public static function findMydiscussions(int $id)
     {
@@ -116,6 +122,26 @@ class Message
     public function setCreatedAt($createdAt)
     {
         $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of citation
+     */
+    public function getCitation()
+    {
+        return $this->citation;
+    }
+
+    /**
+     * Set the value of citation
+     *
+     * @return  self
+     */
+    public function setCitation($citation)
+    {
+        $this->citation = $citation;
 
         return $this;
     }

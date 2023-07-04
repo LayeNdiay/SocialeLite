@@ -6,6 +6,9 @@ RewriteRule ^contacts$ index.php?action=contacts [L]
 RewriteCond %{REQUEST_METHOD} =GET 
 RewriteRule ^discussion/([0-9]+)$ index.php?action=oneContact&id=$1 [L]
 
+RewriteCond %{REQUEST_METHOD} =GET 
+RewriteRule ^messages/create$ index.php?action=addMessage [L]
+
 RewriteCond %{REQUEST_METHOD} =GET
 RewriteRule ^contacts/create$ index.php?action=createContacts [L] 
 

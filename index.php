@@ -4,10 +4,12 @@ require_once $cotrollerPath . "HomeController.php";
 require_once $cotrollerPath . "ContactController.php";
 require_once $cotrollerPath . "GroupController.php";
 require_once $cotrollerPath . "AuthController.php";
+require_once $cotrollerPath . "MessageController.php";
 $home = new HomeController();
 $contact = new ContactController();
 $auth = new AuthController();
 $group = new GroupController();
+$message = new MessageController();
 $action = $_GET["action"] ?? "accueil";
 if ($action === "accueil") {
     $home->index();
@@ -33,4 +35,6 @@ if ($action === "accueil") {
     $contact->view(intval($_GET["id"]));
 } elseif ($action === "logout") {
     $auth->logout();
+} elseif ($action === "addMessage") {
+    $message->create();
 }

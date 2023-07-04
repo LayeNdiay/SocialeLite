@@ -29,8 +29,13 @@ class MessageManager extends Manager
                 $message = false;
                 if (!empty($lastMessage)) {
                     $lastMessage = $lastMessage[0];
+                    $citation = $lastMessage->xpath('citation');
+                    $idCitation = 0;
+                    if (!empty($citation)) {
+                        $idCitation = intval($citation[0]->attributes()["id"]);
+                    }
                     $expediteur =  $this->contactClass::findById(intval($lastMessage->expediteur->attributes()['id']));
-                    $message = new $this->class(intval($lastMessage->attributes()['id']), $lastMessage->contenu, new DateTime($lastMessage[0]->created_at), $expediteur);
+                    $message = new $this->class(intval($lastMessage->attributes()['id']), $lastMessage->contenu, new DateTime($lastMessage[0]->created_at), $expediteur, $idCitation);
                 }
                 $discussion["message"] = $message;
                 array_push($discussions, $discussion);
@@ -58,12 +63,29 @@ class MessageManager extends Manager
         $messages = [];
         foreach ($messagesXml as $messageXml) {
             $expediteur =  $this->contactClass::findById(intval($messageXml->expediteur->attributes()['id']));
+            $citation = $messageXml->xpath('citation');
+            $idCitation = 0;
+            if (!empty($citation)) {
+                $idCitation = intval($citation[0]->attributes()["id"]);
+            }
 
-            $message = new $this->class(intval($messageXml->attributes()['id']), $messageXml->contenu, new DateTime($messageXml[0]->created_at), $expediteur);
+            $message = new $this->class(intval($messageXml->attributes()['id']), $messageXml->contenu, new DateTime($messageXml[0]->created_at), $expediteur, $idCitation);
             array_push($messages, $message);
         }
         $discussions["messages"] = $messages;
 
         return $discussions;
+    }
+    public function save($message, int $id)
+    {
+        $discussionsXml = $this->getXml()->xpath("/messagerie/discussions/discussion[@id=$id]")[0];
+        $messages = $discussionsXml->messages;
+        if (count($discussionsXml->messages) <= 0) {
+            $messages = $discussionsXml->addChild("messages");
+        }
+        $message = $messages->addChild("message");
+        $message->addChild("expediteur")->addAttribute("id", count($discussionsXml->messages));
+
+        var_dump($discussionsXml);
     }
 }
