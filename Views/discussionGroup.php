@@ -13,69 +13,98 @@
       crossorigin="anonymous"></script>
    <link rel="stylesheet" href="./src/style.css" />
    <title>Document</title>
-
 </head>
 
 <body>
+   <?php
+   $groupInfo = $discusions["groupe"];
+   $messages = $discusions["messages"];
+   ?>
    <div class="contenant">
       <div style="display: flex">
          <div class="codeXML">
             <pre class="prettyprint">
              <code class="language-xml">
              <?php
-             highlight_file("../DAO/data.xml"); ?>   
-            </code>
+             var_dump($groupInfo);
+             //  highlight_file(dirname(__DIR__) . DIRECTORY_SEPARATOR . "DAO" . DIRECTORY_SEPARATOR . "data.xml"); ?>   
+             </code>
             </pre>
          </div>
          <div class="formulaire">
-
             <section class="msger">
                <header class="msger-header">
                   <div class="msger-header-title">
-                     <a class="material-symbols-outlined chevron" href="/SocialeLite/home">
+                     <a class="material-symbols-outlined chevron" href="/SocialeLite?info=group-msg">
                         <i class=" fa fa-chevron-left" style="font-size:24px"></i>
-                     </a> SimpleChat
+                     </a>
+                     <?= $groupInfo->getName(); ?>
+                     <div class="btn-group">
+                        <button class="menu dropdown-toggle" data-bs-toggle="dropdown">
+                           <i class="fa fa-bars"></i>
+                        </button>
+                        <ul class="dropdown-menu">
+                           <li><a class="dropdown-item" href="#">Liste des membre du groupe</a></li>
+                           <li>
+                              <hr class="dropdown-divider">
+                           </li>
+                           <?php foreach ($groupInfo->contacts as $user) { ?>
+                              <li><a class="dropdown-item" href="#">
+
+                                    <?php echo $user->getId() == $user_id ? "Vous" : $user->getName() ?>
+                                 </a></li>
+                           <?php } ?>
+                        </ul>
+                     </div>
                   </div>
                </header>
                <main class="msger-chat">
-                  <div class="msg left-msg">
-                     <div class="msg-bubble">
-                        <div class="msg-info">
-                           <div class="msg-info-name">Azprime</div>
-                           <div class="msg-info-time">12:45
-                              <div class="btn-group">
-                                 <!-- <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                    Action
-                                 </button> -->
-                                 <button class="chevron-down dropdown-toggle" data-bs-toggle="dropdown"></button>
-                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Citer ce message</a></li>
-
-                                 </ul>
+                  <?php foreach ($messages as $message) {
+                     $sender = $message->getExpediteur();
+                     $time = $message->getCreatedAt();
+                     if ($sender->getId() != $user_id) { ?>
+                        <div class="msg left-msg">
+                           <div class="msg-bubble">
+                              <div class="msg-info">
+                                 <div class="msg-info-name">
+                                    <?= $sender->getName() ?>
+                                 </div>
+                                 <div class="msg-info-time">
+                                    <?= $time->format("H:i") ?>
+                                    <div class="btn-group">
+                                       <button class="chevron-down dropdown-toggle" data-bs-toggle="dropdown">
+                                          <i class="fa fa-ellipsis"></i>
+                                          <i class="fa fa fa-chevron-down"></i>
+                                          <!-- <i class="fa fa-heart"></i> -->
+                                       </button>
+                                       <ul class="dropdown-menu">
+                                          <li><a class="dropdown-item" href="#">Citer ce message</a></li>
+                                       </ul>
+                                    </div>
+                                 </div>
                               </div>
-
-
+                              <div class="msg-text">
+                                 <?= $message->getContent() ?>
+                              </div>
                            </div>
                         </div>
-
-                        <div class="msg-text">
-                           bonjour 😄
+                     <?php } else { ?>
+                        <div class="msg right-msg">
+                           <div class="msg-bubble">
+                              <div class="msg-info">
+                                 <div class="msg-info-name">Vous</div>
+                                 <div class="msg-info-time">
+                                    <?= $time->format("H:i") ?>
+                                 </div>
+                              </div>
+                              <div class="msg-text">
+                                 <?= $message->getContent() ?>
+                              </div>
+                           </div>
                         </div>
-                     </div>
-                  </div>
-
-                  <div class="msg right-msg">
-                     <div class="msg-bubble">
-                        <div class="msg-info">
-                           <div class="msg-info-name">UserName</div>
-                           <div class="msg-info-time">12:46</div>
-                        </div>
-                        <div class="msg-text">Message Bidon!</div>
-                     </div>
-                  </div>
+                     <?php }
+                  } ?>
                </main>
-
                <form class="msger-inputarea">
                   <input type="text" class="msger-input" placeholder="Votre message." />
                   <button type="submit" class="msger-send-btn">envoyer
@@ -90,6 +119,9 @@
 </html>
 <style>
    <?php include $_SERVER['DOCUMENT_ROOT'] . "SocialeLite/src/style.css"; ?>
+   .dropdown-toggle::after {
+      display: none;
+   }
 </style>
 <script>
    <?php include $_SERVER['DOCUMENT_ROOT'] . "SocialeLite/src/script.js"; ?>

@@ -13,7 +13,9 @@ class GroupController extends Controller
         $this->requiredAuth();
         $groups = Group::findById($id);
         $discusions = Message::findMydiscussion($id, 0);
-        var_dump($discusions);
+        $user=$this->user();
+        $user_id=$user->getId();
+        require $this->viewsPath . "discussionGroup.php";
     }
     public function create()
     {

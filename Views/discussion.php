@@ -13,9 +13,13 @@
       crossorigin="anonymous"></script>
    <link rel="stylesheet" href="./src/style.css" />
    <title>Document</title>
-
 </head>
+<?php
+$interlocuteur=$discusions["recepteur"]->getName();
+$id_interlocuteur=$discusions["recepteur"]->getId();
+$messages=$discusions["messages"];
 
+?>
 <body>
    <div class="contenant">
       <div style="display: flex">
@@ -31,17 +35,21 @@
             <section class="msger">
                <header class="msger-header">
                   <div class="msger-header-title">
-                     <a class="material-symbols-outlined chevron" href="?private-msg">
+                     <a class="material-symbols-outlined chevron" href="/SocialeLite?info=private-msg">
                         <i class="fa fa-chevron-left" style="font-size:24px"></i>
-                     </a> SimpleChat
+                     </a> <?= $interlocuteur?>
                   </div>
                </header>
                <main class="msger-chat">
+                  <?php foreach( $messages as $message){
+                     $sender=$message->getExpediteur();
+                     $time=$message->getCreatedAt();
+                     if($sender->getId()==$id_interlocuteur){ ?>
                   <div class="msg left-msg">
                      <div class="msg-bubble">
                         <div class="msg-info">
-                           <div class="msg-info-name">Azprime</div>
-                           <div class="msg-info-time">12:45
+                           <div class="msg-info-name"><?= $sender->getName()?> </div>
+                           <div class="msg-info-time"><?= $time->format("H:i")?>
                               <div class="btn-group"> <button class="chevron-down dropdown-toggle"
                                     data-bs-toggle="dropdown"></button>
                                  <ul class="dropdown-menu">
@@ -51,23 +59,21 @@
                            </div>
                         </div>
                         <div class="msg-text">
-                           <pre>
-
-                              <?php var_dump($discusions); ?>
-                           </pre>
+                     <?= $message->getContent()?>
                         </div>
                      </div>
                   </div>
-
+               <?php }else { ?>
                   <div class="msg right-msg">
                      <div class="msg-bubble">
                         <div class="msg-info">
-                           <div class="msg-info-name">UserName</div>
-                           <div class="msg-info-time">12:46</div>
+                           <div class="msg-info-name">Vous</div>
+                           <div class="msg-info-time"><?= $time->format("H:i")?></div>
                         </div>
-                        <div class="msg-text">Message Bidon!</div>
+                        <div class="msg-text"> <?= $message->getContent()?></div>
                      </div>
                   </div>
+                   <?php }}?>
                </main>
                <form class="msger-inputarea">
                   <input type="text" class="msger-input" placeholder="Votre message." />
