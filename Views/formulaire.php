@@ -63,23 +63,18 @@ $messages = array(
 
 );
 
-
-
-
-
 $info = isset($_GET['info']) ? $_GET['info'] : '';
-
 
 if ($info == "new-msg") { ?>
    <!-- nouveau message -->
    <form action="contacts/create" method="POST">
       <div class="mb-3">
          <label for="name" class="form-label">Nom Contacte</label>
-         <input type="text" class="form-control" name="name" placeholder="adama dia">
+         <input type="text" class="form-control" name="name" placeholder=" nom du contacte">
       </div>
       <div class="mb-3">
          <label for="phone" class="form-label">Numero Contacte</label>
-         <input type="text" class="form-control" name="phone" placeholder="774563267">
+         <input type="text" class="form-control" name="phone" placeholder="77*******">
       </div>
       <div class="mb-3">
          <button tyle="submit" class="btn btn-primary">Crée</button>
@@ -94,29 +89,30 @@ if ($info == "new-msg") { ?>
 
       <?php foreach ($discusions as $discusion) {
          ?>
-         <a href="<?= "discussion/1" ?>" class="bullDiscussion">
+         <a href=<?= "discussion/" . $discusion['id'] ?> class="bullDiscussion">
             <p>
             <?= $discusion['contact']->getName() ?>
             </p>
             <p>
-            <?= $discusion['message']->getContent() ?>
+            <?php echo ($discusion['message']) ? $discusion['message']->getContent() : "Vous n'avez pas de message" ?>
             </p>
             <span class="time-right">
-            <?= $discusion['message']->getCreatedAt() ?>
+            <?php echo ($discusion['message']) ? $discusion['message']->getCreatedAt()->format("H:i") : '' ?>
+
             </span>
          </a>
       <?php } ?>
       </div>
-   <?php } else { ?>
+   <?php } elseif ($info == "group-msg") { ?>
 
       <!-- groupes -->
       <div class="listContact listgroupe">
 
-      <?php foreach ($groupes as $groupe) {
+      <?php foreach ($groups as $groupe) {
          ?>
-         <a href="<?= "discussionGroup/" . $groupe['id'] ?>" class="bullDiscussion groupe">
+         <a href=<?= "groupes/" . $groupe->getId() ?> class="bullDiscussion groupe">
             <p>
-            <?= $groupe['name'] ?>
+            <?= $groupe->getName() ?>
             </p>
          </a>
       <?php } ?>

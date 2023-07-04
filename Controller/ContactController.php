@@ -18,9 +18,10 @@ class ContactController extends Controller
     public function view(int $id)
     {
         $user = $this->user();
-
-        $discusions = Message::findMydiscussion($id, $user->getId());
-        var_dump($discusions);
+        $userId = $user->getId(); 
+        $discusions = Message::findMydiscussion($id, $userId);
+        require $this->viewsPath . "discussion.php";
+        // var_dump($discusions);
     }
     public function create()
     {
@@ -32,7 +33,7 @@ class ContactController extends Controller
     {
         $this->requiredAuth();
         if (!isset($_POST["phone"]) || !isset($_POST["name"])) {
-            $_SESSION["error"] =  "Le formulaire est incomplet";
+            $_SESSION["error"] = "Le formulaire est incomplet";
             $_SESSION["old"] = ["name" => $_POST["name"], "phone" => $_POST["phone"]];
             $this->redirect("/contacts/create");
         }
