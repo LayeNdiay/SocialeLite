@@ -43,7 +43,7 @@ class GroupController extends Controller
             $this->redirect("/groupes/create");
         } else {
             $idDiscussion =  $group->save($id);
-            $this->redirect("/discussion/groupes" . "/" . $idDiscussion);
+            $this->redirect("/discussion/groupes" . "/" . $group->getId());
         }
     }
 }
