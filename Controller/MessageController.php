@@ -7,7 +7,7 @@ class MessageController extends Controller
 {
     public function create()
     {
-        $message = new Message(0, "salut", new DateTime(), Contact::findById(1), 0);
-        $message->create(4);
+        $message = new Message(0, "salut", new DateTime(), Contact::findById(1), 0, "texte");
+        $message->create(8);
     }
 }

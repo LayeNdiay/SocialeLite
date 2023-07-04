@@ -5,16 +5,18 @@ class GroupController extends Controller
 {
     public function index()
     {
-        $groups = Group::find(1);
-        var_dump($groups);
+        $group = new Group(0, "test2");
+        $group->save($this->user()->getId());
+        // $groups = Group::find(1);
+        // var_dump($groups);
     }
     public function viewOne(int $id)
     {
         $this->requiredAuth();
         $groups = Group::findById($id);
-        $discusions = Message::findMydiscussion($id, 0);
-        $user=$this->user();
-        $user_id=$user->getId();
+        $discusions = Message::findMydiscussion($groups->idDiscussion, 0);
+        $user = $this->user();
+        $user_id = $user->getId();
         require $this->viewsPath . "discussionGroup.php";
     }
     public function create()
@@ -40,8 +42,8 @@ class GroupController extends Controller
             $_SESSION["old"] = ["name" => $_POST["name"]];
             $this->redirect("/groupes/create");
         } else {
-            $group->save($id);
-            $this->redirect("/groupes" . "/" . $group->getId());
+            $idDiscussion =  $group->save($id);
+            $this->redirect("/discussion/groupes" . "/" . $idDiscussion);
         }
     }
 }
