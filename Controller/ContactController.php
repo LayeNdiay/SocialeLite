@@ -20,6 +20,7 @@ class ContactController extends Controller
         $user = $this->user();
         $userId = $user->getId();
         $discusions = Message::findMydiscussion($id, $userId);
+        $idDiscussion = $id;
         require $this->viewsPath . "discussion.php";
         // var_dump($discusions);
     }
