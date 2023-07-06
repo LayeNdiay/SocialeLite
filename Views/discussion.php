@@ -103,13 +103,14 @@ $messages = $discusions["messages"];
                   <?php }
                   } ?>
                </main>
-               <form class="msger-inputarea">
+               <form class="msger-inputarea" enctype="multipart/form-data" action="/SocialeLite/messages/create"
+                  method="POST">
                   <div class="image-upload">
                      <label for="file-input">
                         <i class="fa fa-microphone"></i> </label>
-                     <input id="file-input" type="file" accept=".mp3,audio/*" />
+                     <input name="audio" id="file-input" type="file" accept=".mp3,audio/*" />
                   </div>
-                  <input type="text" class="msger-input" placeholder="Votre message." />
+                  <input name="text" type="text" class="msger-input" placeholder="Votre message." />
                   <button type="submit" class="msger-send-btn">envoyer
                   </button>
                </form>

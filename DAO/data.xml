@@ -3,11 +3,11 @@
 <messagerie>
     <contacts>
         <contact id="1">
-            <nom>John Doe</nom>
-            <telephone>+1234567890</telephone>
+            <nom>Mouhamed ba</nom>
+            <telephone>777924666</telephone>
         </contact>
         <contact id="2">
-            <nom>Jane Smith</nom>
+            <nom>Mariame Sylla</nom>
             <telephone>+9876543210</telephone>
         </contact>
         <contact id="3">
@@ -42,90 +42,90 @@
             <nom>pite</nom>
             <telephone>865475E54</telephone>
         </contact>
-    </contacts>
+    <contact id="11"><nom>Astou Dia</nom><telephone>778965432</telephone></contact></contacts>
     <groupes groupe="3">
         <groupe id="1">
             <nom>Amis proches</nom>
             <membres>
-                <contact id="1" />
-                <contact id="2" />
-                <contact id="3" />
-                <contact id="4" />
-                <contact id="7" />
+                <contact id="1"/>
+                <contact id="2"/>
+                <contact id="3"/>
+                <contact id="4"/>
+                <contact id="7"/>
             </membres>
         </groupe>
         <groupe id="2">
             <nom>Famille</nom>
             <membres>
-                <contact id="1" />
-                <contact id="3" />
+                <contact id="1"/>
+                <contact id="3"/>
             </membres>
         </groupe>
         <groupe id="3">
             <nom>Films</nom>
             <membres>
-                <contact id="1" />
+                <contact id="1"/>
             </membres>
         </groupe>
 
         <groupe id="4">
             <nom>Protocole</nom>
             <membres>
-                <contact id="1" />
+                <contact id="1"/>
             </membres>
         </groupe>
-    </groupes>
+    <groupe id="5"><nom>DIC2</nom><membres><contact id="1"/></membres></groupe></groupes>
     <discussions>
         <discussion id="1" type="individuel">
             <participants>
-                <participant id="1" />
-                <participant id="2" />
+                <participant id="1"/>
+                <participant id="2"/>
             </participants>
             <messages>
                 <message id="1">
-                    <expediteur id="1" />
-                    <contenu type="texte">Salut Jane, comment &#xE7;a va ?</contenu>
+                    <expediteur id="1"/>
+                    <contenu type="texte">Salut Mariame, comment &#xE7;a va ?</contenu>
                     <created_at>2023-06-28 10:00:00</created_at>
                 </message>
                 <message id="3">
-                    <expediteur id="2" />
+                    <expediteur id="2"/>
                     <contenu type="texte">&#xC7;a va bien, merci !</contenu>
                     <created_at>2023-06-28 10:02:00</created_at>
-                    <citation id="1" />
+                    <citation id="1"/>
                 </message>
                 <message id="5">
-                    <expediteur id="1" />
+                    <expediteur id="1"/>
                     <contenu type="texte">Tu as des nouvelles de Laye ?</contenu>
                     <created_at>2023-06-28 10:05:00</created_at>
                 </message>
                 <message id="7">
-                    <expediteur id="2" />
+                    <expediteur id="2"/>
                     <contenu type="texte">Oui, il m'a dit qu'il allait bien.</contenu>
                     <created_at>2023-06-28 10:10:00</created_at>
-                    <citation id="5" />
+                    <citation id="5"/>
                 </message>
             </messages>
         </discussion>
         <discussion id="2" type="groupe" groupe="1">
             <messages>
                 <message id="2">
-                    <expediteur id="1" />
+                    <expediteur id="1"/>
                     <contenu type="audio">audio.mp3</contenu>
                     <created_at>2023-06-28 11:00:00</created_at>
                 </message>
                 <message id="4">
-                    <expediteur id="3" />
+                    <expediteur id="3"/>
                     <contenu type="texte">Bonjour, j'ai une question.</contenu>
                     <created_at>2023-06-28 11:05:00</created_at>
                 </message>
                 <message id="6">
-                    <expediteur id="4" />
+                    <expediteur id="4"/>
                     <contenu type="texte">Quelle est ta question ?</contenu>
                     <created_at>2023-06-28 11:10:00</created_at>
-                    <citation id="4" />
+                    <citation id="4"/>
                 </message>
                 <message id="8">
-                    <expediteur id="2" />
+                    <expediteur id="2"/>
                     <contenu type="texte">J'ai une id&#xE9;e, pourquoi ne pas organiser une sortie
                         ce
                         weekend ?</contenu>
@@ -135,27 +135,27 @@
         </discussion>
         <discussion id="3" type="individuel">
             <participants>
-                <participant id="1" />
-                <participant id="4" />
+                <participant id="1"/>
+                <participant id="4"/>
             </participants>
             <messages>
                 <message id="1">
-                    <expediteur id="1" />
+                    <expediteur id="1"/>
                     <contenu type="audio">audio.mp3</contenu>
                     <created_at>2023-06-28 10:00:00</created_at>
                 </message>
                 <message id="3">
-                    <expediteur id="4" />
+                    <expediteur id="4"/>
                     <contenu type="texte">&#xC7;a va bien, merci !</contenu>
                     <created_at>2023-06-28 10:02:00</created_at>
-                    <citation id="1" />
+                    <citation id="1"/>
                 </message>
             </messages>
         </discussion>
         <discussion id="2" type="groupe" groupe="3">
             <messages>
                 <message id="2">
-                    <expediteur id="1" />
+                    <expediteur id="1"/>
                     <contenu type="texte">Salut tout le monde !</contenu>
                     <created_at>2023-06-28 11:00:00</created_at>
                 </message>
@@ -163,62 +163,62 @@
         </discussion>
         <discussion id="4" type="individuel">
             <participants>
-                <participant id="1" />
-                <participant id="3" />
+                <participant id="1"/>
+                <participant id="3"/>
             </participants>
             <messages>
                 <message id="4">
-                    <expediteur id="1" />
+                    <expediteur id="1"/>
                     <contenu type="texte">Salut Laye, comment vas-tu ?</contenu>
                     <created_at>2023-06-28 12:00:00</created_at>
                 </message>
                 <message id="5">
-                    <expediteur id="3" />
+                    <expediteur id="3"/>
                     <contenu type="texte">Je vais bien, merci !</contenu>
                     <created_at>2023-06-28 12:02:00</created_at>
-                    <citation id="4" />
+                    <citation id="4"/>
                 </message>
             </messages>
         </discussion>
         <discussion id="5" type="groupe" groupe="2">
             <messages>
                 <message id="6">
-                    <expediteur id="1" />
+                    <expediteur id="1"/>
                     <contenu type="texte">Salut Famille, comment allez-vous ?</contenu>
                     <created_at>2023-06-28 13:00:00</created_at>
                 </message>
                 <message id="7">
-                    <expediteur id="3" />
+                    <expediteur id="3"/>
                     <contenu type="texte">Tout va bien de notre c&#xF4;t&#xE9; !</contenu>
                     <created_at>2023-06-28 13:02:00</created_at>
-                    <citation id="6" />
+                    <citation id="6"/>
                 </message>
             </messages>
         </discussion>
         <discussion id="6" type="individuel">
             <participants>
-                <participant id="7" />
-                <participant id="1" />
+                <participant id="7"/>
+                <participant id="1"/>
             </participants>
         </discussion>
         <discussion id="7" type="individuel">
             <participants>
-                <participant id="8" />
-                <participant id="4" />
+                <participant id="8"/>
+                <participant id="4"/>
             </participants>
         </discussion>
         <discussion id="8" type="groupe">
-            <groupe id="5" />
-        </discussion>
+            <groupe id="5"/>
+        <messages><message id="1"><expediteur id="8"/><contenu type="texte">salut</contenu><created_at>2023-07-06 20:45:36</created_at></message><message id="1"><expediteur id="8"/><contenu type="texte">salut</contenu><created_at>2023-07-06 20:46:14</created_at></message><message id="1"><expediteur id="8"/><contenu type="texte">salut</contenu><created_at>2023-07-06 20:49:28</created_at></message></messages></discussion>
         <discussion id="9" type="groupe">
-            <groupe id="7" />
+            <groupe id="7"/>
         </discussion>
-        <discussion id="10" type="groupe" groupe="4" />
+        <discussion id="10" type="groupe" groupe="4"/>
         <discussion id="11" type="individuel">
             <participants>
-                <participant id="9" />
-                <participant id="7" />
+                <participant id="9"/>
+                <participant id="7"/>
             </participants>
         </discussion>
-    </discussions>
+    <discussion id="12" type="groupe" groupe="5"/></discussions>
 </messagerie>
