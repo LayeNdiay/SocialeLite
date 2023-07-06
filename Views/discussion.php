@@ -6,20 +6,23 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
    <script
-      src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?lang=xml&amp;skin=sunburst"></script>
+      src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?lang=xml&amp;skin=sunburst">
+   </script>
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
-      crossorigin="anonymous"></script>
+      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous">
+   </script>
    <link rel="stylesheet" href="./src/style.css" />
    <title>Document</title>
+   <script src="https://unpkg.com/wavesurfer.js"></script>
 </head>
 <?php
-$interlocuteur=$discusions["recepteur"]->getName();
-$id_interlocuteur=$discusions["recepteur"]->getId();
-$messages=$discusions["messages"];
+$interlocuteur = $discusions["recepteur"]->getName();
+$id_interlocuteur = $discusions["recepteur"]->getId();
+$messages = $discusions["messages"];
 
 ?>
+
 <body>
    <div class="contenant">
       <div style="display: flex">
@@ -37,19 +40,23 @@ $messages=$discusions["messages"];
                   <div class="msger-header-title">
                      <a class="material-symbols-outlined chevron" href="/SocialeLite?info=private-msg">
                         <i class="fa fa-chevron-left" style="font-size:24px"></i>
-                     </a> <?= $interlocuteur?>
+                     </a>
+                     <?= $interlocuteur ?>
                   </div>
                </header>
                <main class="msger-chat">
-                  <?php foreach( $messages as $message){
-                     $sender=$message->getExpediteur();
-                     $time=$message->getCreatedAt();
-                     if($sender->getId()==$id_interlocuteur){ ?>
+                  <?php foreach ($messages as $message) {
+                     $sender = $message->getExpediteur();
+                     $time = $message->getCreatedAt();
+                     if ($sender->getId() == $id_interlocuteur) { ?>
                   <div class="msg left-msg">
                      <div class="msg-bubble">
                         <div class="msg-info">
-                           <div class="msg-info-name"><?= $sender->getName()?> </div>
-                           <div class="msg-info-time"><?= $time->format("H:i")?>
+                           <div class="msg-info-name">
+                              <?= $sender->getName() ?>
+                           </div>
+                           <div class="msg-info-time">
+                              <?= $time->format("H:i") ?>
                               <div class="btn-group"> <button class="chevron-down dropdown-toggle"
                                     data-bs-toggle="dropdown"></button>
                                  <ul class="dropdown-menu">
@@ -58,22 +65,44 @@ $messages=$discusions["messages"];
                               </div>
                            </div>
                         </div>
+                        <?php if ($message->getType() == "texte")
+                         { ?>
                         <div class="msg-text">
-                     <?= $message->getContent()?>
+                           <?= $message->getContent() ?>
                         </div>
+                        <?php 
+                       } else { ?>
+                        <div class="msg-text">
+                           <div id="waveform"></div>
+                           <?php require_once $this->viewsPath . "/asset/button.php"; ?>
+                        </div>
+                        <?php } ?>
                      </div>
                   </div>
-               <?php }else { ?>
+                  <?php } else { ?>
                   <div class="msg right-msg">
                      <div class="msg-bubble">
                         <div class="msg-info">
                            <div class="msg-info-name">Vous</div>
-                           <div class="msg-info-time"><?= $time->format("H:i")?></div>
+                           <div class="msg-info-time">
+                              <?= $time->format("H:i") ?>
+                           </div>
                         </div>
-                        <div class="msg-text"> <?= $message->getContent()?></div>
+                        <?php if ($message->getType() == "texte") { ?>
+                        <div class="msg-text">
+                           <?= $message->getContent() ?>
+                        </div>
+                        <?php } else { ?>
+
+                        <div class="msg-text">
+                           <div id="waveform"></div>
+                           <?php require_once $this->viewsPath . "/asset/button.php"; ?>
+                        </div>
+                        <?php } ?>
                      </div>
                   </div>
-                   <?php }}?>
+                  <?php }
+                  } ?>
                </main>
                <form class="msger-inputarea">
                   <input type="text" class="msger-input" placeholder="Votre message." />
@@ -88,9 +117,9 @@ $messages=$discusions["messages"];
 
 </html>
 <style>
-   <?php include $_SERVER['DOCUMENT_ROOT'] . "SocialeLite/src/style.css"; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . "SocialeLite/src/style.css";
+?>
 </style>
 <script>
-   <?php include $_SERVER['DOCUMENT_ROOT'] . "SocialeLite/src/script.js"; ?>
-
+<?php include $_SERVER['DOCUMENT_ROOT'] . "SocialeLite/src/script.js"; ?>
 </script>
