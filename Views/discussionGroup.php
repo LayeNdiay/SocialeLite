@@ -27,10 +27,14 @@
       <div style="display: flex">
          <div class="codeXML">
             <pre class="prettyprint">
-             <code class="language-xml">
-             <?php
-             highlight_file(dirname(__DIR__) . DIRECTORY_SEPARATOR . "DAO" . DIRECTORY_SEPARATOR . "data.xml"); ?>   
-             </code>
+               <code class="language-xml">
+                  <pre>
+
+                     <?php
+                     var_dump($discusions); ?>
+                  </pre>
+            // highlight_file(dirname(__DIR__) . DIRECTORY_SEPARATOR . "DAO" . DIRECTORY_SEPARATOR . "data.xml"); ?>
+            </code>
             </pre>
          </div>
          <div class="formulaire">
