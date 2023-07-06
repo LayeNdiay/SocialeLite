@@ -148,7 +148,7 @@ body {
 }
 
 .msger-inputarea * {
-  padding: 10px;
+  padding: 5px;
   border: none;
   border-radius: 3px;
   font-size: 1em;
@@ -211,4 +211,11 @@ body {
 }
 .dropdown-menu > li:hover > .dropdown-submenu {
   display: block;
+}
+.image-upload > input {
+  display: none;
+}
+
+.fa {
+  cursor: pointer;
 }

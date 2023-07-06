@@ -45,13 +45,20 @@
                   </button>
                </a>
                <div class="btn-group">
-                  <div class="btn-group">
+                  <div class="dropdown">
                      <button type="button" class="dropdown-toggle grp-down btn btn-primary" data-bs-toggle="dropdown"
-                        aria-expanded="false" data-bs-reference="parent"><i class="fa fa-chevron-down"></i>
+                        data-bs-auto-close="outside" aria-expanded="false"><i class="fa fa-plus"></i>
                      </button>
-                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Crée un groupe</a></li>
-                     </ul>
+                     <div>
+                        <form class="dropdown-menu p-4" method="POST" action="groupes/create">
+                           <div class="mb-3">
+                              <label for="name" class="form-label" style="color:black">Nom du Groupe</label>
+                              <input type="text" class="form-control" id="name" name="name">
+                           </div>
+                           <button type="submit" class="btn btn-primary">Crée</button>
+                        </form>
+                     </div>
+
                   </div>
                   <a href="?info=group-msg">
                      <button class="<?php echo $info == "group-msg" ? "btn btn-primary grp" : ''; ?>">

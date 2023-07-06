@@ -65,13 +65,12 @@ $messages = $discusions["messages"];
                               </div>
                            </div>
                         </div>
-                        <?php if ($message->getType() == "texte")
-                         { ?>
+                        <?php if ($message->getType() == "texte") { ?>
                         <div class="msg-text">
                            <?= $message->getContent() ?>
                         </div>
-                        <?php 
-                       } else { ?>
+                        <?php
+                              } else { ?>
                         <div class="msg-text">
                            <div id="waveform"></div>
                            <?php require_once $this->viewsPath . "/asset/button.php"; ?>
@@ -105,6 +104,11 @@ $messages = $discusions["messages"];
                   } ?>
                </main>
                <form class="msger-inputarea">
+                  <div class="image-upload">
+                     <label for="file-input">
+                        <i class="fa fa-microphone"></i> </label>
+                     <input id="file-input" type="file" accept=".mp3,audio/*" />
+                  </div>
                   <input type="text" class="msger-input" placeholder="Votre message." />
                   <button type="submit" class="msger-send-btn">envoyer
                   </button>
