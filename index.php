@@ -39,4 +39,6 @@ if ($action === "accueil") {
     $message->create();
 } elseif ($action === "register") {
     $auth->signUp();
+} elseif ($action === "addMember") {
+    $group->addMenber(intval($_GET["id"]));
 }

@@ -26,6 +26,10 @@ class Group extends Model
         self::initialise();
         return self::$groupManager->find($id);
     }
+    public function addMember(Contact $Contact)
+    {
+        return self::$groupManager->addMember($this, $Contact);
+    }
 
     public static function findById(int $id)
     {

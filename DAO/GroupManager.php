@@ -72,4 +72,13 @@ class GroupManager extends Manager
         $xml->asXML(self::$file);
         return $idDiscussion;
     }
+    public function addMember($group, $contact)
+    {
+        $id = $group->getId();
+        $xml = $this->getXml();
+        $groups = $xml->xpath("/messagerie/groupes/groupe[@id=$id]")[0];
+        $membres = $groups->xpath("membres")[0];
+        $membres->addChild("contact")->addAttribute('id', $contact->getId());
+        $xml->asXML(self::$file);
+    }
 }

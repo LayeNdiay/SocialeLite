@@ -26,7 +26,12 @@ RewriteCond %{REQUEST_METHOD} =POST
 RewriteRule ^groupes/create$ index.php?action=createGroupesPost [L] 
 
 RewriteCond %{REQUEST_METHOD} =GET
+RewriteRule ^groupes/([0-9]+)/membre$ index.php?action=Onegroupe&id=$1 [L] 
+
+RewriteCond %{REQUEST_METHOD} =GET
 RewriteRule ^groupes/([0-9]+)$ index.php?action=Onegroupe&id=$1 [L] 
+
+
 
 RewriteCond %{REQUEST_METHOD} =GET
 RewriteRule ^login$ index.php?action=login [L] 

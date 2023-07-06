@@ -1,14 +1,29 @@
 <?php
 require_once "Controller.php";
 require_once MODEL . "Group.php";
+require_once MODEL . "Contact.php";
 class GroupController extends Controller
 {
     public function index()
     {
         $group = new Group(0, "test2");
-        $group->save($this->user()->getId());
-        // $groups = Group::find(1);
-        // var_dump($groups);
+    }
+    public function addMenberView(int $id)
+    {
+        $this->requiredAuth();
+        $error = $this->flash();
+        $old = $this->old();
+    }
+    public function addMenber(int $id)
+    {
+        if (!isset($_POST["contact"])) {
+            $_SESSION["error"] =  "Le champ Contact est obligatoire";
+            $_SESSION["old"] = ["contact" => $_POST["contact"]];
+            $this->redirect("/groupes/$id");
+        }
+        $group = Group::findById($id);
+        $contact = Contact::findById($_POST["contact"]);
+        $group->addMember($contact);
     }
     public function viewOne(int $id)
     {
