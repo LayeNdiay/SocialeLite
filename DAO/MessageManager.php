@@ -56,7 +56,7 @@ class MessageManager extends Manager
             $recepteur = $discussionsXml->xpath("participants/participant[@id!=$idEmeteur]")[0];
             $discussions["recepteur"] = $this->contactClass::findById(intval(($recepteur->attributes()["id"])));
         } else {
-            $recepteur = $discussionsXml->xpath("groupe")[0]->attributes()["id"];
+            $recepteur = $discussionsXml->attributes()["groupe"];
             $discussions["groupe"] = $this->groupeClasse::findById(intval($recepteur));
         }
         $messagesXml = $discussionsXml->xpath("messages/message");

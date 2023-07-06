@@ -18,7 +18,7 @@ class ContactController extends Controller
     public function view(int $id)
     {
         $user = $this->user();
-        $userId = $user->getId(); 
+        $userId = $user->getId();
         $discusions = Message::findMydiscussion($id, $userId);
         require $this->viewsPath . "discussion.php";
         // var_dump($discusions);
