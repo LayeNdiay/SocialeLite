@@ -32,6 +32,7 @@ class GroupController extends Controller
         $discusions = Message::findMydiscussion($groups->idDiscussion, 0);
         $user = $this->user();
         $user_id = $user->getId();
+        $contacts = Contact::find();
         require $this->viewsPath . "discussionGroup.php";
     }
     public function create()

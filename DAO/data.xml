@@ -235,11 +235,6 @@
                     <contenu type="texte">salut</contenu>
                     <created_at>2023-07-06 20:49:28</created_at>
                 </message>
-                <message id="1">
-                    <expediteur id="8" />
-                    <contenu type="audio">C:\wamp64\www\SocialeLite\DAO\files\1688673555audio.mp3</contenu>
-                    <created_at>2023-07-06 19:59:15</created_at>
-                </message>
             </messages>
         </discussion>
         <discussion id="9" type="groupe">
