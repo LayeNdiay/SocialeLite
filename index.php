@@ -36,9 +36,9 @@ if ($action === "accueil") {
 } elseif ($action === "logout") {
     $auth->logout();
 } elseif ($action === "addMessage") {
-    $message->create();
+    $message->create(intval($_GET["idDiscussion"]), intval($_GET["idContact"]));
 } elseif ($action === "register") {
     $auth->signUp();
-} elseif ($action === "addMember") {
+} elseif ($action === "addMenber") {
     $group->addMenber(intval($_GET["id"]));
 }

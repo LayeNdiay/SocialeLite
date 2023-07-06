@@ -7,7 +7,7 @@ RewriteCond %{REQUEST_METHOD} =GET
 RewriteRule ^discussion/([0-9]+)$ index.php?action=oneContact&id=$1 [L]
 
 RewriteCond %{REQUEST_METHOD} =POST
-RewriteRule ^messages/create$ index.php?action=addMessage [L]
+RewriteRule ^messages/create/([0-9]+)/([0-9]+)$ index.php?action=addMessage&idDiscussion=$1&idContact=$2 [L]
 
 RewriteCond %{REQUEST_METHOD} =GET
 RewriteRule ^contacts/create$ index.php?action=createContacts [L] 
@@ -25,12 +25,12 @@ RewriteRule ^groupes/create$ index.php?action=createGroupes [L]
 RewriteCond %{REQUEST_METHOD} =POST
 RewriteRule ^groupes/create$ index.php?action=createGroupesPost [L] 
 
-RewriteCond %{REQUEST_METHOD} =POST
-RewriteRule ^groupes/([0-9]+)/membre$ index.php?action=Onegroupe&id=$1 [L] 
 
 RewriteCond %{REQUEST_METHOD} =GET
 RewriteRule ^groupes/([0-9]+)$ index.php?action=Onegroupe&id=$1 [L] 
 
+RewriteCond %{REQUEST_METHOD} =POST
+RewriteRule ^groupes/membre/([0-9]+)$ index.php?action=addMenber&id=$1 [L] 
 
 
 RewriteCond %{REQUEST_METHOD} =GET
