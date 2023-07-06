@@ -35,15 +35,15 @@ class GroupController extends Controller
         }
 
         $group = new Group(0, $_POST["name"]);
-        $id = $_SESSION["id"];
+        $user = $this->user();
 
         if ($group->verify()) {
             $_SESSION["error"] = "Ce nom de group existe déjà";
             $_SESSION["old"] = ["name" => $_POST["name"]];
             $this->redirect("/groupes/create");
         } else {
-            $idDiscussion =  $group->save($id);
-            $this->redirect("/discussion/groupes" . "/" . $group->getId());
+            $idDiscussion =  $group->save($user->getId());
+            $this->redirect("/groupes" . "/" . $group->getId());
         }
     }
 }

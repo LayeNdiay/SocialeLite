@@ -48,7 +48,7 @@
                 <contact id="3"/>
             </membres>
         </groupe>
-    </groupes>
+    <groupe id="3"><nom>test</nom><membres><contact id="1"/></membres></groupe></groupes>
     <discussions>
         <discussion id="1" type="individuel">
             <participants>
@@ -178,5 +178,5 @@
                 <participant id="1"/>
             </participants>
         </discussion>
-    <discussion id="7" type="individuel"><participants><participant id="8"/><participant id="4"/></participants></discussion></discussions>
+    <discussion id="7" type="individuel"><participants><participant id="8"/><participant id="4"/></participants></discussion><discussion id="8" type="groupe"><groupe id="3"/></discussion></discussions>
 </messagerie>
