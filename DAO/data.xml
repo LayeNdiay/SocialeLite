@@ -34,6 +34,14 @@
             <nom>arouna keita</nom>
             <telephone>777923564</telephone>
         </contact>
+        <contact id="9">
+            <nom>My amigo</nom>
+            <telephone>774320990</telephone>
+        </contact>
+        <contact id="10">
+            <nom>pite</nom>
+            <telephone>865475E54</telephone>
+        </contact>
     </contacts>
     <groupes groupe="3">
         <groupe id="1">
@@ -205,5 +213,11 @@
             <groupe id="7" />
         </discussion>
         <discussion id="10" type="groupe" groupe="4" />
+        <discussion id="11" type="individuel">
+            <participants>
+                <participant id="9" />
+                <participant id="7" />
+            </participants>
+        </discussion>
     </discussions>
 </messagerie>

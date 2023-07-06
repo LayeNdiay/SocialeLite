@@ -40,6 +40,10 @@ class Contact extends Model
     {
         return self::$contactManager->create($this, $id);
     }
+    public function inscription()
+    {
+        return self::$contactManager->singUp($this);
+    }
     /**
      * Get the value of id
      */

@@ -15,7 +15,7 @@
       <?php
       $con = isset($_GET['connexion']) ? $_GET['connexion'] : '';
       if ($con === 'register') { ?>
-         <form action="/SocialeLite/login" method="POST">
+         <form action="/SocialeLite/register" method="POST">
             <h3 style="text-align: center">welcome</h3>
             <?= $error ?>
             <label for=""><b>Votre Nom</b></label>

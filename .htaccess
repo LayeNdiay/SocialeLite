@@ -31,6 +31,9 @@ RewriteRule ^groupes/([0-9]+)$ index.php?action=Onegroupe&id=$1 [L]
 RewriteCond %{REQUEST_METHOD} =GET
 RewriteRule ^login$ index.php?action=login [L] 
 
+RewriteCond %{REQUEST_METHOD} =POST
+RewriteRule ^register$ index.php?action=register [L] 
+
 RewriteRule ^login/(.*)$ index.php?action=login&connexion=$1 [L] 
 
 RewriteCond %{REQUEST_METHOD} =POST

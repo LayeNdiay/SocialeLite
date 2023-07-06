@@ -37,4 +37,6 @@ if ($action === "accueil") {
     $auth->logout();
 } elseif ($action === "addMessage") {
     $message->create();
+} elseif ($action === "register") {
+    $auth->signUp();
 }

@@ -61,4 +61,15 @@ class ContactManager extends Manager
 
         return $idDiscussion;
     }
+    public function singUp($contact)
+    {
+        $xml = $this->getXml();
+        $contactsXml = $xml->contacts[0];
+        $contactNode = $contactsXml->addChild("contact");
+        $contact->setId(count($contactsXml->children()));
+        $contactNode->addChild('nom', $contact->getName());
+        $contactNode->addChild('telephone', $contact->getTelephone());
+        $contactNode->addAttribute('id', $contact->getId());
+        $xml->asXML(self::$file);
+    }
 }
