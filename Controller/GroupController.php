@@ -24,6 +24,7 @@ class GroupController extends Controller
         $group = Group::findById($id);
         $contact = Contact::findById($_POST["contact"]);
         $group->addMember($contact);
+        $this->redirect("/groupes/$id");
     }
     public function viewOne(int $id)
     {
