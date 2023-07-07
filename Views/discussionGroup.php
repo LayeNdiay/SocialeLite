@@ -44,10 +44,7 @@
          <div class="codeXML">
             <pre class="prettyprint">
                <code class="language-xml">
-                  <pre>
-                     <?php var_dump($groupInfo); ?>
-                  </pre>
-            <!-- <?php highlight_file(dirname(__DIR__) . DIRECTORY_SEPARATOR . "DAO" . DIRECTORY_SEPARATOR . "data.xml"); ?> -->
+            <?php highlight_file(dirname(__DIR__) . DIRECTORY_SEPARATOR . "DAO" . DIRECTORY_SEPARATOR . "data.xml"); ?>
             </code>
             </pre>
          </div>
@@ -79,8 +76,8 @@
                         <button type="button" class="menu dropdown-toggle" data-bs-toggle="dropdown">
                            <i class="fa fa-plus"></i>
                         </button>
-                        <form class="dropdown-menu p-4" action=<?="/SocialeLite/groupes/membre/". $groupInfo->getId() ?>
-                           method="POST">
+                        <form class="dropdown-menu p-4"
+                           action=<?= "/SocialeLite/groupes/membre/" . $groupInfo->getId() ?> method="POST">
                            <select name="contact" class="form-select" aria-label="Default select example">
                               <?php foreach ($strangers as $strang_user) {
                                  ?>

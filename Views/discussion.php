@@ -29,9 +29,9 @@ $messages = $discusions["messages"];
          <div class="codeXML">
             <pre class="prettyprint">
              <code class="language-xml">
-             <?php
-             highlight_file(dirname(__DIR__) . DIRECTORY_SEPARATOR . "DAO" . DIRECTORY_SEPARATOR . "data.xml"); ?>   
-             </code>
+               <?php
+               //  highlight_file(dirname(__DIR__) . DIRECTORY_SEPARATOR . "DAO" . DIRECTORY_SEPARATOR . "data.xml"); ?>   
+            </code>
             </pre>
          </div>
          <div class="formulaire">
@@ -70,8 +70,8 @@ $messages = $discusions["messages"];
                                     <!-- <?= $message->getContent() ?> -->
                                     <pre>
 
-                                       <?php var_dump($discusions); ?>
-                                    </pre>
+                                                         <?php var_dump($discusions); ?>
+                                                      </pre>
                                  </div>
                                  <?php
                               } else { ?>
@@ -107,8 +107,7 @@ $messages = $discusions["messages"];
                      <?php }
                   } ?>
                </main>
-               <form class="msger-inputarea" enctype="multipart/form-data" action="/SocialeLite/messages/create"
-                  method="POST">
+               <form class="msger-inputarea" enctype="multipart/form-data" action=<?= "/SocialeLite/messages/create/" . $idDiscussion . "/$id_interlocuteur" ?> method="POST">
                   <div class="image-upload">
                      <label for="file-input">
                         <i class="fa fa-microphone"></i> </label>
