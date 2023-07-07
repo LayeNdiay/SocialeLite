@@ -1,0 +1,33 @@
+    <!ELEMENT messagerie (contacts, groupes, discussions)>
+    
+    <!ELEMENT contacts (contact*)>
+    <!ELEMENT contact (nom?, telephone?)>
+    <!ATTLIST contact id CDATA #REQUIRED>
+    <!ELEMENT nom (#PCDATA)>
+    <!ELEMENT telephone (#PCDATA)>
+    
+    <!ELEMENT groupes (groupe*)>
+    <!ELEMENT groupe (nom, membres)>
+    <!ATTLIST groupe id CDATA #REQUIRED>
+    <!ELEMENT membres (contact*)>
+   
+    <!ATTLIST contact id CDATA #REQUIRED>
+    
+    <!ELEMENT discussions (discussion*)>
+    <!ELEMENT discussion (participants?, messages)>
+    <!ATTLIST discussion id CDATA #REQUIRED>
+    <!ATTLIST discussion type CDATA #REQUIRED>
+    <!ATTLIST discussion groupe CDATA #IMPLIED>
+    <!ELEMENT participants (participant*)>
+    <!ELEMENT participant EMPTY>
+    <!ATTLIST participant id CDATA #REQUIRED>
+    <!ELEMENT messages (message*)>
+    <!ELEMENT message (expediteur, contenu, created_at, citation?)>
+    <!ATTLIST message id CDATA #REQUIRED>
+    <!ELEMENT expediteur EMPTY>
+    <!ATTLIST expediteur id CDATA #REQUIRED>
+    <!ELEMENT contenu (#PCDATA)>
+    <!ATTLIST contenu type (fichier | texte | vocal | audio | image | video) #REQUIRED>
+    <!ELEMENT created_at (#PCDATA)>
+    <!ELEMENT citation EMPTY>
+    <!ATTLIST citation id CDATA #REQUIRED>

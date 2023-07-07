@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE messagerie>
-<messagerie>
+<messagerie xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="msg.xsd">
     <contacts>
         <contact id="1">
             <nom>Mouhamed ba</nom>
@@ -47,7 +48,7 @@
             <telephone>778965432</telephone>
         </contact>
     </contacts>
-    <groupes groupe="3">
+    <groupes id="3">
         <groupe id="1">
             <nom>Amis proches</nom>
             <membres>
