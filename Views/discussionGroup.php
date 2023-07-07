@@ -7,11 +7,11 @@
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
    <script
       src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?lang=xml&amp;skin=sunburst">
-      </script>
+   </script>
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous">
-      </script>
+   </script>
    <script src="https://unpkg.com/wavesurfer.js"></script>
 
    <link rel="stylesheet" href="./src/style.css" />
@@ -22,6 +22,22 @@
    <?php
    $groupInfo = $discusions["groupe"];
    $messages = $discusions["messages"];
+   $users = $groupInfo->contacts;
+   $strangers = [];
+   foreach ($tableauContacts as $contact) {
+      $id = $contact->getId();
+      $found = false;
+
+      foreach ($users as $user) {
+         if ($user->getId() == $id) {
+            $found = true;
+            break;
+         }
+      }
+      if (!$found) {
+         $strangers[] = $contact;
+      }
+   }
    ?>
    <div class="contenant">
       <div style="display: flex">
@@ -29,11 +45,9 @@
             <pre class="prettyprint">
                <code class="language-xml">
                   <pre>
-
-                     <?php
-                     var_dump($discusions); ?>
+                     <?php var_dump($groupInfo); ?>
                   </pre>
-            // highlight_file(dirname(__DIR__) . DIRECTORY_SEPARATOR . "DAO" . DIRECTORY_SEPARATOR . "data.xml"); ?>
+            <!-- <?php highlight_file(dirname(__DIR__) . DIRECTORY_SEPARATOR . "DAO" . DIRECTORY_SEPARATOR . "data.xml"); ?> -->
             </code>
             </pre>
          </div>
@@ -47,19 +61,35 @@
                      <?= $groupInfo->getName(); ?>
                      <div class="btn-group">
                         <button class="menu dropdown-toggle" data-bs-toggle="dropdown">
-                           <i class="fa fa-bars"></i>
+                           <i class="fa fa-info"></i>
                         </button>
                         <ul class="dropdown-menu">
                            <li><a class="dropdown-item" href="#">Liste des membre du groupe</a></li>
                            <li>
                               <hr class="dropdown-divider">
                            </li>
-                           <?php foreach ($groupInfo->contacts as $user) { ?>
-                              <li><a class="dropdown-item" href="#">
-                                    <?php echo $user->getId() == $user_id ? "Vous" : $user->getName() ?>
-                                 </a></li>
+                           <?php foreach ($users as $user) { ?>
+                           <li><a class="dropdown-item" href="#">
+                                 <?php echo $user->getId() == $user_id ? "Vous" : $user->getName() ?>
+                              </a></li>
                            <?php } ?>
                         </ul>
+                     </div>
+                     <div class="plus">
+                        <button type="button" class="menu dropdown-toggle" data-bs-toggle="dropdown">
+                           <i class="fa fa-plus"></i>
+                        </button>
+                        <form class="dropdown-menu p-4" action=<?="/SocialeLite/groupes/membre/". $groupInfo->getId() ?>
+                           method="POST">
+                           <select name="contact" class="form-select" aria-label="Default select example">
+                              <?php foreach ($strangers as $strang_user) {
+                                 ?>
+                              <option value=<?= $strang_user->getId() ?>><?= $strang_user->getName() ?>
+                              </option>
+                              <?php } ?>
+                           </select>
+                           <button type="submit" class="btn btn-primary mt-3">Ajouter</button>
+                        </form>
                      </div>
                   </div>
                </header>
@@ -68,60 +98,60 @@
                      $sender = $message->getExpediteur();
                      $time = $message->getCreatedAt();
                      if ($sender->getId() != $user_id) { ?>
-                        <div class="msg left-msg">
-                           <div class="msg-bubble">
-                              <div class="msg-info">
-                                 <div class="msg-info-name">
-                                    <?= $sender->getName() ?>
-                                 </div>
-                                 <div class="msg-info-time">
-                                    <?= $time->format("H:i") ?>
-                                    <div class="btn-group">
-                                       <button class="chevron-down dropdown-toggle" data-bs-toggle="dropdown">
-                                          <i class="fa fa fa-chevron-down"></i>
-                                       </button>
-                                       <ul class="dropdown-menu">
-                                          <li><a class="dropdown-item" href="#">Citer ce message</a></li>
-                                       </ul>
-                                    </div>
-                                 </div>
+                  <div class="msg left-msg">
+                     <div class="msg-bubble">
+                        <div class="msg-info">
+                           <div class="msg-info-name">
+                              <?= $sender->getName() ?>
+                           </div>
+                           <div class="msg-info-time">
+                              <?= $time->format("H:i") ?>
+                              <div class="btn-group">
+                                 <button class="chevron-down dropdown-toggle" data-bs-toggle="dropdown">
+                                    <i class="fa fa fa-chevron-down"></i>
+                                 </button>
+                                 <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Citer ce message</a></li>
+                                 </ul>
                               </div>
-                              <?php if ($message->getType() == "texte") { ?>
-                                 <div class="msg-text">
-                                    <?= $message->getContent() ?>
-                                 </div>
-                                 <?php
+                           </div>
+                        </div>
+                        <?php if ($message->getType() == "texte") { ?>
+                        <div class="msg-text">
+                           <?= $message->getContent() ?>
+                        </div>
+                        <?php
                               } else { ?>
-                                 <div class="msg-text">
-                                    <div id="waveform"></div>
-                                    <?php require_once $this->viewsPath . "/asset/button.php"; ?>
-                                 </div>
-                              <?php } ?>
+                        <div class="msg-text">
+                           <div id="waveform"></div>
+                           <?php require_once $this->viewsPath . "/asset/button.php"; ?>
+                        </div>
+                        <?php } ?>
+                     </div>
+                  </div>
+                  <?php } else { ?>
+                  <div class="msg right-msg">
+                     <div class="msg-bubble">
+                        <div class="msg-info">
+                           <div class="msg-info-name">Vous</div>
+                           <div class="msg-info-time">
+                              <?= $time->format("H:i") ?>
                            </div>
                         </div>
-                     <?php } else { ?>
-                        <div class="msg right-msg">
-                           <div class="msg-bubble">
-                              <div class="msg-info">
-                                 <div class="msg-info-name">Vous</div>
-                                 <div class="msg-info-time">
-                                    <?= $time->format("H:i") ?>
-                                 </div>
-                              </div>
-                              <?php if ($message->getType() == "texte") { ?>
-                                 <div class="msg-text">
-                                    <?= $message->getContent() ?>
-                                 </div>
-                              <?php } else { ?>
+                        <?php if ($message->getType() == "texte") { ?>
+                        <div class="msg-text">
+                           <?= $message->getContent() ?>
+                        </div>
+                        <?php } else { ?>
 
-                                 <div class="msg-text">
-                                    <div id="waveform"></div>
-                                    <?php require_once $this->viewsPath . "/asset/button.php"; ?>
-                                 </div>
-                              <?php } ?>
-                           </div>
+                        <div class="msg-text">
+                           <div id="waveform"></div>
+                           <?php require_once $this->viewsPath . "/asset/button.php"; ?>
                         </div>
-                     <?php }
+                        <?php } ?>
+                     </div>
+                  </div>
+                  <?php }
                   } ?>
                </main>
                <form class="msger-inputarea">
@@ -142,13 +172,12 @@
 
 </html>
 <style>
-   <?php include $_SERVER['DOCUMENT_ROOT'] . "SocialeLite/src/style.css";
+<?php include $_SERVER['DOCUMENT_ROOT'] . "SocialeLite/src/style.css";
 
-   ?>
-   .dropdown-toggle::after {
-      display: none;
-   }
+?>.dropdown-toggle::after {
+   display: none;
+}
 </style>
 <script>
-   <?php include $_SERVER['DOCUMENT_ROOT'] . "SocialeLite/src/script.js"; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . "SocialeLite/src/script.js"; ?>
 </script>

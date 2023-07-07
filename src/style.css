@@ -186,6 +186,7 @@ body {
 .menu {
   outline: none;
   border: none;
+  margin-left: 20px;
 }
 
 .chevron-down:hover {
@@ -218,4 +219,7 @@ body {
 
 .fa {
   cursor: pointer;
+}
+.plus {
+  margin-top: 2px;
 }
