@@ -50,7 +50,11 @@
             <nom>Oumar dia</nom>
             <telephone>3378465234</telephone>
         </contact>
-    <contact id="13"><nom>ahmeth</nom><telephone>786543667</telephone></contact></contacts>
+        <contact id="13">
+            <nom>ahmeth</nom>
+            <telephone>786543667</telephone>
+        </contact>
+    <contact id="14"><nom>fallou </nom><telephone>7786542345</telephone></contact></contacts>
     <groupes>
         <groupe id="1">
             <nom>Amis proches</nom>
@@ -80,12 +84,14 @@
             <nom>Protocole</nom>
             <membres>
                 <contact id="1"/>
+                <contact id="1"/>
                 <contact id="2"/>
             </membres>
         </groupe>
         <groupe id="5">
             <nom>DIC2</nom>
             <membres>
+                <contact id="1"/>
                 <contact id="1"/>
                 <contact id="3"/>
                 <contact id="2"/>
@@ -126,10 +132,25 @@
                     <contenu type="texte">bonsoir mariame</contenu>
                     <created_at>2023-07-07 20:10:16</created_at>
                 </message>
-            <message id="1"><expediteur id="1"/><contenu type="texte">bonsoir</contenu><created_at>2023-07-12 23:47:25</created_at></message><message id="1"><expediteur id="1"/><contenu type="texte">bonsoir</contenu><created_at>2023-07-12 23:50:55</created_at></message></messages>
+                <message id="1">
+                    <expediteur id="1"/>
+                    <contenu type="texte">bonsoir</contenu>
+                    <created_at>2023-07-12 23:47:25</created_at>
+                </message>
+                <message id="1">
+                    <expediteur id="1"/>
+                    <contenu type="texte">bonsoir</contenu>
+                    <created_at>2023-07-12 23:50:55</created_at>
+                </message>
+            <message id="1"><expediteur id="1"/><contenu type="texte">salut</contenu><created_at>2023-07-13 17:24:25</created_at></message><message id="1"><expediteur id="1"/><contenu type="texte">bonjour mariame</contenu><created_at>2023-07-13 17:34:43</created_at><citation id="7"/></message></messages>
         </discussion>
         <discussion id="2" type="groupe" groupe="1">
             <messages>
+                <message id="2">
+                    <expediteur id="1"/>
+                    <contenu type="audio">audio.mp3</contenu>
+                    <created_at>2023-06-28 11:00:00</created_at>
+                </message>
                 <message id="4">
                     <expediteur id="3"/>
                     <contenu type="texte">Bonjour, j'ai une question.</contenu>
@@ -166,6 +187,12 @@
                 <participant id="4"/>
             </participants>
             <messages>
+
+                <message id="1">
+                    <expediteur id="1"/>
+                    <contenu type="audio">audio.mp3</contenu>
+                    <created_at>2023-06-28 10:00:00</created_at>
+                </message>
                 <message id="3">
                     <expediteur id="4"/>
                     <contenu type="texte">&#xC7;a va bien, merci !</contenu>
@@ -177,7 +204,12 @@
                     <contenu type="texte">bonsoir lay</contenu>
                     <created_at>2023-07-07 03:08:25</created_at>
                 </message>
-            <message id="1"><expediteur id="3"/><contenu type="texte">salut</contenu><created_at>2023-07-12 23:51:03</created_at></message></messages>
+                <message id="1">
+                    <expediteur id="3"/>
+                    <contenu type="texte">salut</contenu>
+                    <created_at>2023-07-12 23:51:03</created_at>
+                </message>
+            </messages>
 
         </discussion>
         <discussion id="2" type="groupe" groupe="3">
@@ -206,7 +238,17 @@
                     <created_at>2023-06-28 12:02:00</created_at>
                     <citation id="4"/>
                 </message>
-            <message id="1"><expediteur id="4"/><contenu type="texte">bonsoir</contenu><created_at>2023-07-12 23:50:35</created_at></message><message id="1"><expediteur id="4"/><contenu type="texte">salut</contenu><created_at>2023-07-12 23:52:38</created_at></message></messages>
+                <message id="1">
+                    <expediteur id="4"/>
+                    <contenu type="texte">bonsoir</contenu>
+                    <created_at>2023-07-12 23:50:35</created_at>
+                </message>
+                <message id="1">
+                    <expediteur id="4"/>
+                    <contenu type="texte">salut</contenu>
+                    <created_at>2023-07-12 23:52:38</created_at>
+                </message>
+            </messages>
         </discussion>
         <discussion id="5" type="groupe" groupe="2">
             <messages>
@@ -228,14 +270,26 @@
                 <participant id="7"/>
                 <participant id="1"/>
             </participants>
-        <messages><message id="1"><expediteur id="6"/><contenu type="texte">bonjour</contenu><created_at>2023-07-12 23:44:25</created_at></message><message id="1"><expediteur id="6"/><contenu type="texte">hello</contenu><created_at>2023-07-12 23:52:52</created_at></message></messages></discussion>
+            <messages>
+                <message id="1">
+                    <expediteur id="6"/>
+                    <contenu type="texte">bonjour</contenu>
+                    <created_at>2023-07-12 23:44:25</created_at>
+                </message>
+                <message id="1">
+                    <expediteur id="6"/>
+                    <contenu type="texte">hello</contenu>
+                    <created_at>2023-07-12 23:52:52</created_at>
+                </message>
+            </messages>
+        </discussion>
         <discussion id="7" type="individuel">
             <participants>
                 <participant id="8"/>
                 <participant id="4"/>
             </participants>
         </discussion>
-        <discussion id="8" type="groupe">
+        <discussion id="8" type="groupe" groupe="5">
             <messages>
                 <message id="1">
                     <expediteur id="8"/>
@@ -264,5 +318,11 @@
             </participants>
         </discussion>
         <discussion id="12" type="groupe" groupe="5"/>
-    <discussion id="13" type="individuel"><participants><participant id="13"/><participant id="1"/></participants><messages><message id="1"><expediteur id="13"/><contenu type="texte">salut ahmeth</contenu><created_at>2023-07-12 23:45:00</created_at></message><message id="1"><expediteur id="13"/><contenu type="texte">bonsoir</contenu><created_at>2023-07-12 23:47:15</created_at></message><message id="1"><expediteur id="13"/><contenu type="texte">salut</contenu><created_at>2023-07-12 23:52:59</created_at></message></messages></discussion></discussions>
+        <discussion id="11" type="individuel">
+            <participants>
+                <participant id="12"/>
+                <participant id="1"/>
+            </participants>
+        </discussion>
+    <discussion id="14" type="individuel"><participants><participant id="14"/><participant id="1"/></participants><messages><message id="1"><expediteur id="14"/><contenu type="texte">0</contenu><created_at>2023-07-13 17:22:53</created_at></message><message id="1"><expediteur id="14"/><contenu type="texte">salut</contenu><created_at>2023-07-13 17:24:38</created_at></message><message id="1"><expediteur id="14"/><contenu type="texte">bonsoir</contenu><created_at>2023-07-13 17:26:51</created_at></message><message id="1"><expediteur id="14"/><contenu type="texte">bonjour</contenu><created_at>2023-07-13 17:27:43</created_at></message></messages></discussion></discussions>
 </messagerie>
