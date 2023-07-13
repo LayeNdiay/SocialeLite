@@ -87,7 +87,7 @@ class MessageManager extends Manager
         $message->setId(count($discussionsXml->messages));
         $messageXml = $messages->addChild("message");
         $messageXml->addAttribute("id", $message->getId());
-        $messageXml->addChild("expediteur")->addAttribute("id", $id);
+        $messageXml->addChild("expediteur")->addAttribute("id", $message->getexpediteur()->getId());
         $messageXml->addChild("contenu", $message->getContent())->addAttribute("type", $message->getType());
         $messageXml->addChild("created_at", $message->getCreatedAt()->format('Y-m-d H:i:s'));
         if ($message->getCitation() > 0) {
