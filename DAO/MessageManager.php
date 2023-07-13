@@ -1,6 +1,5 @@
 <?php
 
-use function PHPSTORM_META\type;
 
 require_once "Manager.php";
 class MessageManager extends Manager
