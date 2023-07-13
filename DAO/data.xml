@@ -47,16 +47,12 @@
             <nom>Astou Dia</nom>
             <telephone>778965432</telephone>
         </contact>
-        <
-        <
-        <
-        <
-        <
         <contact id="12">
             <nom>Oumar dia</nom>
             <telephone>3378465234</telephone>
         </contact>
-    </contacts> >>>>>>> b2519d1598d66fe4ed345e4ba7dc8f29807e3e30 <groupes>
+    </contacts>
+    <groupes>
         <groupe id="1">
             <nom>Amis proches</nom>
             <membres>
@@ -84,18 +80,9 @@
         <groupe id="4">
             <nom>Protocole</nom>
             <membres>
-                <
-                <
-                <
-                <
-                <
-                <
-                < HEAD
                 <contact id="1" />
-                =======
                 <contact id="1" />
                 <contact id="2" />
-                >>>>>>> b2519d1598d66fe4ed345e4ba7dc8f29807e3e30
             </membres>
         </groupe>
         <groupe id="5">
@@ -146,20 +133,11 @@
         </discussion>
         <discussion id="2" type="groupe" groupe="1">
             <messages>
-                <
-                <
-                <
-                <
-                <
-                <
-                < HEAD
                 <message id="2">
                     <expediteur id="1" />
                     <contenu type="audio">audio.mp3</contenu>
                     <created_at>2023-06-28 11:00:00</created_at>
                 </message>
-                =======
-                >>>>>>> b2519d1598d66fe4ed345e4ba7dc8f29807e3e30
                 <message id="4">
                     <expediteur id="3" />
                     <contenu type="texte">Bonjour, j'ai une question.</contenu>
@@ -196,20 +174,12 @@
                 <participant id="4" />
             </participants>
             <messages>
-                <
-                <
-                <
-                <
-                <
-                <
-                < HEAD
+
                 <message id="1">
                     <expediteur id="1" />
                     <contenu type="audio">audio.mp3</contenu>
                     <created_at>2023-06-28 10:00:00</created_at>
                 </message>
-                =======
-                >>>>>>> b2519d1598d66fe4ed345e4ba7dc8f29807e3e30
                 <message id="3">
                     <expediteur id="4" />
                     <contenu type="texte">&#xC7;a va bien, merci !</contenu>
@@ -279,16 +249,8 @@
                 <participant id="4" />
             </participants>
         </discussion>
-        <
-        <
-        <
-        <
-        <
-        <
-        < HEAD
         <discussion id="8" type="groupe" groupe="5">
-        =======
-        <discussion id="8" type="groupe"> >>>>>>> b2519d1598d66fe4ed345e4ba7dc8f29807e3e30 <messages>
+            <messages>
                 <message id="1">
                     <expediteur id="8" />
                     <contenu type="texte">salut</contenu>
@@ -306,18 +268,9 @@
                 </message>
             </messages>
         </discussion>
-        <
-        <
-        <
-        <
-        <
-        <
-        < HEAD
-=======
         <discussion id="9" type="groupe">
         </discussion>
         <discussion id="10" type="groupe" groupe="4" />
-        >>>>>>> b2519d1598d66fe4ed345e4ba7dc8f29807e3e30
         <discussion id="11" type="individuel">
             <participants>
                 <participant id="9" />
