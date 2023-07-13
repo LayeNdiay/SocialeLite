@@ -109,3 +109,7 @@ label {
 .active {
   display: block;
 }
+
+.selectionner {
+  display: none;
+}

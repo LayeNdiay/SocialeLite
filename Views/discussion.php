@@ -30,7 +30,8 @@ $messages = $discusions["messages"];
             <pre class="prettyprint">
              <code class="language-xml">
                <?php
-               highlight_file(dirname(__DIR__) . DIRECTORY_SEPARATOR . "DAO" . DIRECTORY_SEPARATOR . "data.xml"); ?>   
+               var_dump($discusions); ?>
+               // highlight_file(dirname(__DIR__) . DIRECTORY_SEPARATOR . "DAO" . DIRECTORY_SEPARATOR . "data.xml"); ?>   
             </code>
             </pre>
          </div>
@@ -48,7 +49,7 @@ $messages = $discusions["messages"];
                   <?php foreach ($messages as $message) {
                      $sender = $message->getExpediteur();
                      $time = $message->getCreatedAt();
-                     if ($sender->getId() == $id_interlocuteur) { ?>
+                     if ($sender->getId() != $user->getId()) { ?>
                   <div class="msg left-msg">
                      <div class="msg-bubble">
                         <div class="msg-info">
@@ -60,7 +61,9 @@ $messages = $discusions["messages"];
                               <div class="btn-group"> <button class="chevron-down dropdown-toggle"
                                     data-bs-toggle="dropdown"></button>
                                  <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Citer ce message</a></li>
+
+                                    <li class="selectedMsg" data-value=<?= $message->getId() ?>><a class="dropdown-item"
+                                          href="#">Citer ce message</a></li>
                                  </ul>
                               </div>
                            </div>
@@ -106,13 +109,14 @@ $messages = $discusions["messages"];
                   } ?>
          </main>
          <form class="msger-inputarea" enctype="multipart/form-data"
-            action=<?= "/SocialeLite/messages/create/" . $idDiscussion . "/" . $id_interlocuteur ?> method="POST">
+            action=<?= "/SocialeLite/messages/create/" . $idDiscussion . "/" . $user->getId() ?> method="POST">
             <div class="image-upload">
                <label for="file-input">
                   <i class="fa fa-microphone"></i> </label>
                <input name="audio" id="file-input" type="file" accept=".mp3,audio/*" />
             </div>
             <input name="text" type="text" class="msger-input" placeholder="Votre message." />
+            <input name="msgCite" type="text" style="display: none;" value="0" id="inputMessage" />
             <button type="submit" class="msger-send-btn">envoyer
             </button>
          </form>
@@ -127,3 +131,21 @@ $messages = $discusions["messages"];
 <?php include $_SERVER['DOCUMENT_ROOT'] . "SocialeLite/src/style.css";
 ?>
 </style>
+
+<script>
+var selectedMsgLinks = document.querySelectorAll('.selectedMsg');
+var inputMessage = document.getElementById('inputMessage');
+
+selectedMsgLinks.forEach(function(link) {
+   link.addEventListener('click', function(event) {
+      event.preventDefault();
+
+      // Récupérer la valeur du data-value de l'élément <a> cliqué
+      let dataValue = link.getAttribute('data-value');
+
+      // Mettre à jour la valeur de l'input avec la valeur de data-value
+      inputMessage.value = dataValue;
+      console.log(dataValue);
+   });
+});
+</script>
