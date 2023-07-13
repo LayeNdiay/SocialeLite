@@ -10,7 +10,7 @@ RewriteCond %{REQUEST_METHOD} =POST
 RewriteRule ^messages/create/([0-9]+)/([0-9]+)$ index.php?action=addMessage&idDiscussion=$1&idContact=$2 [L]
 
 RewriteCond %{REQUEST_METHOD} =POST
-RewriteRule ^messages/discussion/create/([0-9]+)/([0-9]+)$ index.php?action=addMenageGroup&idDiscussion=$1&idContact=$2 [L]
+RewriteRule ^messages/groupes/create/([0-9]+)/([0-9]+)$ index.php?action=addMenageGroup&idDiscussion=$1&idContact=$2 [L]
 
 RewriteCond %{REQUEST_METHOD} =GET
 RewriteRule ^contacts/create$ index.php?action=createContacts [L] 
