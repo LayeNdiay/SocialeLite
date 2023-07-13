@@ -30,7 +30,8 @@ $messages = $discusions["messages"];
             <pre class="prettyprint">
              <code class="language-xml">
                <?php
-               highlight_file(dirname(__DIR__) . DIRECTORY_SEPARATOR . "DAO" . DIRECTORY_SEPARATOR . "data.xml"); ?>   
+               var_dump($discusions); ?>
+               // highlight_file(dirname(__DIR__) . DIRECTORY_SEPARATOR . "DAO" . DIRECTORY_SEPARATOR . "data.xml"); ?>   
             </code>
             </pre>
          </div>
@@ -48,7 +49,7 @@ $messages = $discusions["messages"];
                   <?php foreach ($messages as $message) {
                      $sender = $message->getExpediteur();
                      $time = $message->getCreatedAt();
-                     if ($sender->getId() == $id_interlocuteur) { ?>
+                     if ($sender->getId() != $user->getId()) { ?>
                   <div class="msg left-msg">
                      <div class="msg-bubble">
                         <div class="msg-info">
@@ -108,14 +109,14 @@ $messages = $discusions["messages"];
                   } ?>
          </main>
          <form class="msger-inputarea" enctype="multipart/form-data"
-            action=<?= "/SocialeLite/messages/create/" . $idDiscussion . "/" . $id_interlocuteur ?> method="POST">
+            action=<?= "/SocialeLite/messages/create/" . $idDiscussion . "/" . $user->getId() ?> method="POST">
             <div class="image-upload">
                <label for="file-input">
                   <i class="fa fa-microphone"></i> </label>
                <input name="audio" id="file-input" type="file" accept=".mp3,audio/*" />
             </div>
             <input name="text" type="text" class="msger-input" placeholder="Votre message." />
-            <input name="text" type="text" class="selectionner" value="0" id="inputMessage" />
+            <input name="msgCite" type="text" style="display: none;" value="0" id="inputMessage" />
             <button type="submit" class="msger-send-btn">envoyer
             </button>
          </form>

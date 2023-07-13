@@ -10,6 +10,7 @@ class MessageController extends Controller
 
         $content = "";
         $type = "";
+        $msgCite = isset($_POST["msgCite"]) ? intval($_POST["msgCite"]) : 0;
         if (isset($_POST["text"]) && $_POST["text"] !== "") {
             $content = $_POST["text"];
             $type = "texte";
@@ -18,7 +19,7 @@ class MessageController extends Controller
             move_uploaded_file($_FILES["audio"]["tmp_name"], $content);
             $type = "audio";
         }
-        $message = new Message(0, $content, new DateTime(), Contact::findById($idContact), 0, $type);
+        $message = new Message(0, $content, new DateTime(), Contact::findById($idContact), $msgCite, $type);
         $message->create($idDiscussion);
         $this->redirect("/discussion" . '/' . $idDiscussion);
     }

@@ -54,7 +54,7 @@
             <nom>ahmeth</nom>
             <telephone>786543667</telephone>
         </contact>
-    <contact id="14"><nom>fallou </nom><telephone>7786542345</telephone></contact></contacts>
+    <contact id="14"><nom>fallou </nom><telephone>7786542345</telephone></contact><contact id="15"><nom>wade</nom><telephone>778653478</telephone></contact></contacts>
     <groupes>
         <groupe id="1">
             <nom>Amis proches</nom>
@@ -142,7 +142,7 @@
                     <contenu type="texte">bonsoir</contenu>
                     <created_at>2023-07-12 23:50:55</created_at>
                 </message>
-            <message id="1"><expediteur id="1"/><contenu type="texte">salut</contenu><created_at>2023-07-13 17:24:25</created_at></message><message id="1"><expediteur id="1"/><contenu type="texte">bonjour mariame</contenu><created_at>2023-07-13 17:34:43</created_at><citation id="7"/></message></messages>
+            <message id="1"><expediteur id="1"/><contenu type="texte">salut</contenu><created_at>2023-07-13 17:24:25</created_at></message><message id="1"><expediteur id="1"/><contenu type="texte">bonjour mariame</contenu><created_at>2023-07-13 17:34:43</created_at><citation id="7"/></message><message id="1"><expediteur id="1"/><contenu type="texte">reponds moi</contenu><created_at>2023-07-13 17:45:53</created_at></message></messages>
         </discussion>
         <discussion id="2" type="groupe" groupe="1">
             <messages>
@@ -179,7 +179,7 @@
                     <contenu type="texte">bonsoir tout le monde</contenu>
                     <created_at>2023-07-07 05:27:54</created_at>
                 </message>
-            </messages>
+            <message id="1"><expediteur id="2"/><contenu type="texte">bonjour</contenu><created_at>2023-07-13 17:37:59</created_at></message></messages>
         </discussion>
         <discussion id="3" type="individuel">
             <participants>
@@ -324,5 +324,5 @@
                 <participant id="1"/>
             </participants>
         </discussion>
-    <discussion id="14" type="individuel"><participants><participant id="14"/><participant id="1"/></participants><messages><message id="1"><expediteur id="14"/><contenu type="texte">0</contenu><created_at>2023-07-13 17:22:53</created_at></message><message id="1"><expediteur id="14"/><contenu type="texte">salut</contenu><created_at>2023-07-13 17:24:38</created_at></message><message id="1"><expediteur id="14"/><contenu type="texte">bonsoir</contenu><created_at>2023-07-13 17:26:51</created_at></message><message id="1"><expediteur id="14"/><contenu type="texte">bonjour</contenu><created_at>2023-07-13 17:27:43</created_at></message></messages></discussion></discussions>
+    <discussion id="14" type="individuel"><participants><participant id="14"/><participant id="1"/></participants><messages><message id="1"><expediteur id="14"/><contenu type="texte">0</contenu><created_at>2023-07-13 17:22:53</created_at></message><message id="1"><expediteur id="14"/><contenu type="texte">salut</contenu><created_at>2023-07-13 17:24:38</created_at></message><message id="1"><expediteur id="14"/><contenu type="texte">bonsoir</contenu><created_at>2023-07-13 17:26:51</created_at></message><message id="1"><expediteur id="14"/><contenu type="texte">bonjour</contenu><created_at>2023-07-13 17:27:43</created_at></message></messages></discussion><discussion id="15" type="individuel"><participants><participant id="15"/><participant id="1"/></participants><messages><message id="1"><expediteur id="15"/><contenu type="texte">salut</contenu><created_at>2023-07-13 17:41:37</created_at></message><message id="1"><expediteur id="15"/><contenu type="texte">bonjour</contenu><created_at>2023-07-13 17:45:11</created_at></message></messages></discussion></discussions>
 </messagerie>
