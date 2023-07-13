@@ -29,9 +29,9 @@ $messages = $discusions["messages"];
          <div class="codeXML">
             <pre class="prettyprint">
              <code class="language-xml">
-             <?php
-             highlight_file(dirname(__DIR__) . DIRECTORY_SEPARATOR . "DAO" . DIRECTORY_SEPARATOR . "data.xml"); ?>   
-             </code>
+               <?php
+               highlight_file(dirname(__DIR__) . DIRECTORY_SEPARATOR . "DAO" . DIRECTORY_SEPARATOR . "data.xml"); ?>   
+            </code>
             </pre>
          </div>
          <div class="formulaire">
@@ -68,6 +68,7 @@ $messages = $discusions["messages"];
                         <?php if ($message->getType() == "texte") { ?>
                         <div class="msg-text">
                            <?= $message->getContent() ?>
+
                         </div>
                         <?php
                               } else { ?>
@@ -95,28 +96,29 @@ $messages = $discusions["messages"];
 
                         <div class="msg-text">
                            <div id="waveform"></div>
-                           <?php require_once $this->viewsPath . "/asset/button.php"; ?>
                         </div>
-                        <?php } ?>
+                        <?php require_once $this->viewsPath . "/asset/button.php"; ?>
                      </div>
+                     <?php } ?>
                   </div>
-                  <?php }
-                  } ?>
-               </main>
-               <form class="msger-inputarea" enctype="multipart/form-data" action="/SocialeLite/messages/create"
-                  method="POST">
-                  <div class="image-upload">
-                     <label for="file-input">
-                        <i class="fa fa-microphone"></i> </label>
-                     <input name="audio" id="file-input" type="file" accept=".mp3,audio/*" />
-                  </div>
-                  <input name="text" type="text" class="msger-input" placeholder="Votre message." />
-                  <button type="submit" class="msger-send-btn">envoyer
-                  </button>
-               </form>
-            </section>
          </div>
+         <?php }
+                  } ?>
+         </main>
+         <form class="msger-inputarea" enctype="multipart/form-data"
+            action=<?= "/SocialeLite/messages/create/" . $idDiscussion . "/" . $id_interlocuteur ?> method="POST">
+            <div class="image-upload">
+               <label for="file-input">
+                  <i class="fa fa-microphone"></i> </label>
+               <input name="audio" id="file-input" type="file" accept=".mp3,audio/*" />
+            </div>
+            <input name="text" type="text" class="msger-input" placeholder="Votre message." />
+            <button type="submit" class="msger-send-btn">envoyer
+            </button>
+         </form>
+         </section>
       </div>
+   </div>
    </div>
 </body>
 
@@ -125,6 +127,3 @@ $messages = $discusions["messages"];
 <?php include $_SERVER['DOCUMENT_ROOT'] . "SocialeLite/src/style.css";
 ?>
 </style>
-<script>
-<?php include $_SERVER['DOCUMENT_ROOT'] . "SocialeLite/src/script.js"; ?>
-</script>

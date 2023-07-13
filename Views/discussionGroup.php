@@ -22,15 +22,31 @@
    <?php
    $groupInfo = $discusions["groupe"];
    $messages = $discusions["messages"];
+   $idDiscussion = $groupInfo->idDiscussion;
+   $users = $groupInfo->contacts;
+   $strangers = [];
+   foreach ($tableauContacts as $contact) {
+      $id = $contact->getId();
+      $found = false;
+
+      foreach ($users as $user) {
+         if ($user->getId() == $id) {
+            $found = true;
+            break;
+         }
+      }
+      if (!$found) {
+         $strangers[] = $contact;
+      }
+   }
    ?>
    <div class="contenant">
       <div style="display: flex">
          <div class="codeXML">
             <pre class="prettyprint">
-             <code class="language-xml">
-             <?php
-             highlight_file(dirname(__DIR__) . DIRECTORY_SEPARATOR . "DAO" . DIRECTORY_SEPARATOR . "data.xml"); ?>   
-             </code>
+               <code class="language-xml">
+            <?php highlight_file(dirname(__DIR__) . DIRECTORY_SEPARATOR . "DAO" . DIRECTORY_SEPARATOR . "data.xml"); ?>
+            </code>
             </pre>
          </div>
          <div class="formulaire">
@@ -43,19 +59,34 @@
                      <?= $groupInfo->getName(); ?>
                      <div class="btn-group">
                         <button class="menu dropdown-toggle" data-bs-toggle="dropdown">
-                           <i class="fa fa-bars"></i>
+                           <i class="fa fa-info"></i>
                         </button>
                         <ul class="dropdown-menu">
                            <li><a class="dropdown-item" href="#">Liste des membre du groupe</a></li>
                            <li>
                               <hr class="dropdown-divider">
                            </li>
-                           <?php foreach ($groupInfo->contacts as $user) { ?>
+                           <?php foreach ($users as $user) { ?>
                               <li><a class="dropdown-item" href="#">
                                     <?php echo $user->getId() == $user_id ? "Vous" : $user->getName() ?>
                                  </a></li>
                            <?php } ?>
                         </ul>
+                     </div>
+                     <div class="plus">
+                        <button type="button" class="menu dropdown-toggle" data-bs-toggle="dropdown">
+                           <i class="fa fa-plus"></i>
+                        </button>
+                        <form class="dropdown-menu p-4" action=<?= "/SocialeLite/groupes/membre/" . $groupInfo->getId() ?> method="POST">
+                           <select name="contact" class="form-select" aria-label="Default select example">
+                              <?php foreach ($strangers as $strang_user) {
+                                 ?>
+                                 <option value=<?= $strang_user->getId() ?>><?= $strang_user->getName() ?>
+                                 </option>
+                              <?php } ?>
+                           </select>
+                           <button type="submit" class="btn btn-primary mt-3">Ajouter</button>
+                        </form>
                      </div>
                   </div>
                </header>
@@ -120,13 +151,13 @@
                      <?php }
                   } ?>
                </main>
-               <form class="msger-inputarea">
+               <form class="msger-inputarea" enctype="multipart/form-data" action=<?= "/SocialeLite/messages/create/" . $idDiscussion . "/" . $user_id ?> method="POST">
                   <div class="image-upload">
                      <label for="file-input">
                         <i class="fa fa-microphone"></i> </label>
-                     <input id="file-input" type="file" accept=".mp3,audio/*" />
+                     <input name="audio" id="file-input" type="file" accept=".mp3,audio/*" />
                   </div>
-                  <input type="text" class="msger-input" placeholder="Votre message." />
+                  <input name="text" type="text" class="msger-input" placeholder="Votre message." />
                   <button type="submit" class="msger-send-btn">envoyer
                   </button>
                </form>

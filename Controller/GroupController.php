@@ -17,7 +17,7 @@ class GroupController extends Controller
     public function addMenber(int $id)
     {
         if (!isset($_POST["contact"])) {
-            $_SESSION["error"] =  "Le champ Contact est obligatoire";
+            $_SESSION["error"] = "Le champ Contact est obligatoire";
             $_SESSION["old"] = ["contact" => $_POST["contact"]];
             $this->redirect("/groupes/$id");
         }
@@ -33,7 +33,7 @@ class GroupController extends Controller
         $discusions = Message::findMydiscussion($groups->idDiscussion, 0);
         $user = $this->user();
         $user_id = $user->getId();
-        $contacts = Contact::find();
+        $tableauContacts = Contact::find();
         $idDiscussion = $id;
         require $this->viewsPath . "discussionGroup.php";
     }
@@ -47,7 +47,7 @@ class GroupController extends Controller
     {
         $this->requiredAuth();
         if (!isset($_POST["name"])) {
-            $_SESSION["error"] =  "Le champ groupe est obligatoire";
+            $_SESSION["error"] = "Le champ groupe est obligatoire";
             $_SESSION["old"] = ["name" => $_POST["name"]];
             $this->redirect("/groupes/create");
         }
@@ -60,7 +60,7 @@ class GroupController extends Controller
             $_SESSION["old"] = ["name" => $_POST["name"]];
             $this->redirect("/groupes/create");
         } else {
-            $idDiscussion =  $group->save($user->getId());
+            $idDiscussion = $group->save($user->getId());
             $this->redirect("/groupes" . "/" . $group->getId());
         }
     }
