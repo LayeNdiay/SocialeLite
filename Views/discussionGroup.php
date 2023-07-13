@@ -153,7 +153,7 @@
                   } ?>
                </main>
                <form class="msger-inputarea" enctype="multipart/form-data"
-                  action=<?= "/SocialeLite/messages/create/" . $idDiscussion . "/" . $user_id ?> method="POST">
+                  action=<?= "/SocialeLite/groupes/create/" . $idDiscussion . "/" . $user_id ?> method="POST">
                   <div class="image-upload">
                      <label for="file-input">
                         <i class="fa fa-microphone"></i> </label>
