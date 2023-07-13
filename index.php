@@ -41,4 +41,6 @@ if ($action === "accueil") {
     $auth->signUp();
 } elseif ($action === "addMenber") {
     $group->addMenber(intval($_GET["id"]));
+} elseif ($action === "addMenageGroup") {
+    $message->createGroupe(intval($_GET["idDiscussion"]), intval($_GET["idContact"]));
 }
