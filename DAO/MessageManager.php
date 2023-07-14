@@ -5,9 +5,9 @@ use function PHPSTORM_META\type;
 require_once "Manager.php";
 class MessageManager extends Manager
 {
-    private string   $class;
-    private string  $contactClass;
-    private string  $groupeClasse;
+    private string $class;
+    private string $contactClass;
+    private string $groupeClasse;
     public function __construct(string $class, string $contact, string $group)
     {
         $this->class = $class;
@@ -34,7 +34,7 @@ class MessageManager extends Manager
                     if (!empty($citation)) {
                         $idCitation = intval($citation[0]->attributes()["id"]);
                     }
-                    $expediteur =  $this->contactClass::findById(intval($lastMessage->expediteur->attributes()['id']));
+                    $expediteur = $this->contactClass::findById(intval($lastMessage->expediteur->attributes()['id']));
                     $message = new $this->class(intval($lastMessage->attributes()['id']), $lastMessage->contenu, new DateTime($lastMessage[0]->created_at), $expediteur, $idCitation, $lastMessage->contenu[0]->attributes()["type"]);
                 }
                 $discussion["message"] = $message;
@@ -62,7 +62,7 @@ class MessageManager extends Manager
         $messagesXml = $discussionsXml->xpath("messages/message");
         $messages = [];
         foreach ($messagesXml as $messageXml) {
-            $expediteur =  $this->contactClass::findById(intval($messageXml->expediteur->attributes()['id']));
+            $expediteur = $this->contactClass::findById(intval($messageXml->expediteur->attributes()['id']));
             $citation = $messageXml->xpath('citation');
             $idCitation = 0;
             if (!empty($citation)) {
@@ -84,7 +84,7 @@ class MessageManager extends Manager
         if (count($discussionsXml->messages) <= 0) {
             $messages = $discussionsXml->addChild("messages");
         }
-        $message->setId(count($discussionsXml->messages));
+        $message->setId(count($discussionsXml->messages[0]));
         $messageXml = $messages->addChild("message");
         $messageXml->addAttribute("id", $message->getId());
         $messageXml->addChild("expediteur")->addAttribute("id", $message->getexpediteur()->getId());

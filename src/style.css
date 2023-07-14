@@ -223,3 +223,7 @@ body {
 .plus {
   margin-top: 2px;
 }
+
+.msgSelected {
+  display: none;
+}

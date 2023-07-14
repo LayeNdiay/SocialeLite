@@ -45,7 +45,8 @@
          <div class="codeXML">
             <pre class="prettyprint">
                <code class="language-xml">
-            <?php highlight_file(dirname(__DIR__) . DIRECTORY_SEPARATOR . "DAO" . DIRECTORY_SEPARATOR . "data.xml"); ?>
+               
+            <?php highlight_file(dirname(__DIR__) . DIRECTORY_SEPARATOR . "DAO" . DIRECTORY_SEPARATOR . "data.xml"); ?> 
             </code>
             </pre>
          </div>
@@ -95,9 +96,23 @@
                   <?php foreach ($messages as $message) {
                      $sender = $message->getExpediteur();
                      $time = $message->getCreatedAt();
+                     $messageCite = '';
+                     if ($message->getCitation() != 0) {
+                        $idMsgCite = $message->getCitation();
+                        foreach ($messages as $mgs) {
+                           if ($mgs->getId() == $idMsgCite) {
+                              $messageCite = $mgs->getContent();
+                           }
+                        }
+                     }
                      if ($sender->getId() != $user_id) { ?>
                   <div class="msg left-msg">
                      <div class="msg-bubble">
+                        <?php if ($messageCite != '') { ?>
+                        <div class="msg right-msg  msg-bubble" style="  border-left: 7px solid red !important">
+                           <?= $messageCite; ?>
+                        </div>
+                        <?php } ?>
                         <div class="msg-info">
                            <div class="msg-info-name">
                               <?= $sender->getName() ?>
@@ -109,7 +124,9 @@
                                     <i class="fa fa fa-chevron-down"></i>
                                  </button>
                                  <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Citer ce message</a></li>
+
+                                    <li class="selectedMsg" data-value=<?= $message->getId() ?>><a class="dropdown-item"
+                                          href="#">Citer ce message</a></li>
                                  </ul>
                               </div>
                            </div>
@@ -130,10 +147,23 @@
                   <?php } else { ?>
                   <div class="msg right-msg">
                      <div class="msg-bubble">
+                        <?php if ($messageCite != '') { ?>
+                        <div class="msg right-msg  msg-bubble" style="  border-right: 7px solid red !important">
+                           <?= $messageCite; ?>
+                        </div>
+                        <?php } ?>
                         <div class="msg-info">
                            <div class="msg-info-name">Vous</div>
                            <div class="msg-info-time">
                               <?= $time->format("H:i") ?>
+                              <div class="btn-group"> <button class="chevron-down dropdown-toggle"
+                                    data-bs-toggle="dropdown"></button>
+                                 <ul class="dropdown-menu">
+
+                                    <li class="selectedMsg" data-value=<?= $message->getId() ?>><a class="dropdown-item"
+                                          href="#">Citer ce message</a></li>
+                                 </ul>
+                              </div>
                            </div>
                         </div>
                         <?php if ($message->getType() == "texte") { ?>
@@ -153,13 +183,15 @@
                   } ?>
                </main>
                <form class="msger-inputarea" enctype="multipart/form-data"
-                  action=<?= "/SocialeLite/groupes/create/" . $idDiscussion . "/" . $user_id ?> method="POST">
+                  action=<?= "/SocialeLite/messages/groupes/create/" . $groupInfo->getId() . "/" . $user_id . "/" . $idDiscussion ?>
+                  method="POST">
                   <div class="image-upload">
                      <label for="file-input">
                         <i class="fa fa-microphone"></i> </label>
                      <input name="audio" id="file-input" type="file" accept=".mp3,audio/*" />
                   </div>
                   <input name="text" type="text" class="msger-input" placeholder="Votre message." />
+                  <input name="msgCite" type="text" style="display: none;" value="0" id="inputMessage" />
                   <button type="submit" class="msger-send-btn">envoyer
                   </button>
                </form>
@@ -178,5 +210,5 @@
 }
 </style>
 <script>
-// <?php include $_SERVER['DOCUMENT_ROOT'] . "SocialeLite/src/script.js"; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . "SocialeLite/src/script.js"; ?>
 </script>

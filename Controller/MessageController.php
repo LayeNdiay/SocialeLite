@@ -23,7 +23,7 @@ class MessageController extends Controller
         $message->create($idDiscussion);
         $this->redirect("/discussion" . '/' . $idDiscussion);
     }
-    public function createGroupe(int $idDiscussion, int $idContact)
+    public function createGroupe(int $idGroupe, int $idContact, int $idDiscussion)
     {
 
         $content = "";
@@ -39,6 +39,6 @@ class MessageController extends Controller
         }
         $message = new Message(0, $content, new DateTime(), Contact::findById($idContact), $msgCite, $type);
         $message->create($idDiscussion);
-        $this->redirect("/groupes" . '/' . $idDiscussion);
+        $this->redirect("/groupes" . '/' . $idGroupe);
     }
 }
